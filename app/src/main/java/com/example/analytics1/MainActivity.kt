@@ -26,6 +26,13 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.firebase.remoteconfig.remoteConfigSettings
 
+/**
+ * @Author: anhhv
+ * @Date: 12,June,2024.
+ * @Accounts
+ *      -> https://github.com/...
+ */
+
 class MainActivity : AppCompatActivity() {
 
     private val requestPermissionLauncher = registerForActivityResult(
