@@ -1,22 +1,23 @@
 <resources>
     <string name="app_name" translatable="false">App Studio</string>
+
     <string name="text">Text</string>
     <string name="image">Image</string>
     <string name="voice">Voice</string>
     <string name="crash_button_label">Cause Crash</string>
     <string name="catch_crash_checkbox_label">Catch Crash</string>
-    <string name="remote_config" translatable="false">Remote Config</string>
+    <string name="remote_config">Remote Config</string>
     <string name="write_realtime_db">Write Realtime Database</string>
-    <string name="welcome" translatable="false">Welcome...</string>
+    <string name="welcome">Welcome…</string>
     <string name="realtime_db">Realtime Database</string>
     <string name="write">Write</string>
     <string name="read">Read</string>
     <string name="firebase_cloud_message">Firebase Cloud Message</string>
-    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
+    <string name="firebase">Firebase</string>
     <string name="admob">AdMob</string>
-    <string name="interstitial_button_text">Show Interstitial Ad</string>
     <string name="splash">Splash</string>
 
     <!--    Id Admob Test-->

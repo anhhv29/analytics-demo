@@ -24,12 +24,18 @@
             android:noHistory="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".AdmobActivity"
+            android:exported="true" />
+        <activity
+            android:name=".FirebaseActivity"
             android:exported="true" />
 
         <service
@@ -38,19 +44,14 @@
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
-        </service>
-
-        <!-- AdMob -->
+        </service> <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/admob_app_id" />
-
         <meta-data
             android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"
-            android:value="true" />
-        <!-- -->
-
-        <!-- FirebaseMessagingService-->
+            android:value="true" /> <!--  -->
+        <!-- FirebaseMessagingService -->
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"
             android:resource="@xml/gma_ad_services_config"
@@ -59,11 +60,9 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_ic_notification" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
-        <!-- -->
-
     </application>
+
 </manifest>
