@@ -24,9 +24,12 @@
     <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string name="admob">AdMob</string>
     <string name="interstitial_button_text">Show Interstitial Ad</string>
+    <string name="splash">Splash</string>
 
     <!--    Id Admob Test-->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="open_ad_unit_id">ca-app-pub-3940256099942544/9257395921</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+
 </resources>

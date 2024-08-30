@@ -58,4 +58,6 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.preference.ktx)
+    implementation(libs.multidex)
+    implementation(libs.lifecycle.process)
 }
