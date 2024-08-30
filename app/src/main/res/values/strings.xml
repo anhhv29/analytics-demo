@@ -16,9 +16,13 @@
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
+    <string name="splash">Splash</string>
     <string name="firebase">Firebase</string>
     <string name="admob">AdMob</string>
-    <string name="splash">Splash</string>
+    <string name="banner_ads">Banner</string>
+    <string name="interstitial_ads">Interstitial</string>
+    <string name="native_ads">Native</string>
+    <string name="rewarded_ads">Rewarded</string>
 
     <!--    Id Admob Test-->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
