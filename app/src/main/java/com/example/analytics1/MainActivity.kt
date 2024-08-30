@@ -1,7 +1,6 @@
 package com.example.analytics1
 
 import android.Manifest
-import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Build
@@ -12,8 +11,9 @@ import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.example.analytics1.Constants.RemoteConfig.Companion.SHOW_BACKGROUND_IMAGE
+import com.example.analytics1.MyFirebaseMessagingService.Companion.getTokenFCM
 import com.example.analytics1.databinding.ActivityMainBinding
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
@@ -22,10 +22,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.messaging.messaging
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.remoteConfig
-import com.google.firebase.remoteconfig.remoteConfigSettings
 
 /**
  * @Author: anhhv
@@ -53,14 +50,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var firebaseAnalytics: FirebaseAnalytics
-//    private lateinit var crashlytics: FirebaseCrashlytics
 
     companion object {
         private const val TEXT = "text"
         private const val IMAGE = "image"
         private const val VOICE = "voice"
         private const val TAG = "Main"
-        private const val SHOW_BACKGROUND_IMAGE = "show_image"
     }
 
     private var text = ""
@@ -87,7 +82,6 @@ class MainActivity : AppCompatActivity() {
             vText.setOnClickListener {
                 type = TEXT
                 firebaseAnalytics.logEvent(type) {
-                    //            param("type", type)
                     Toast.makeText(baseContext, type, Toast.LENGTH_SHORT).show()
                     Log.d("logEven", type)
                 }
@@ -95,7 +89,6 @@ class MainActivity : AppCompatActivity() {
             vImage.setOnClickListener {
                 type = IMAGE
                 firebaseAnalytics.logEvent(type) {
-                    //            param("type", type)
                     Toast.makeText(baseContext, type, Toast.LENGTH_SHORT).show()
                     Log.d("logEven", type)
                 }
@@ -103,7 +96,6 @@ class MainActivity : AppCompatActivity() {
             vVoice.setOnClickListener {
                 type = VOICE
                 firebaseAnalytics.logEvent(type) {
-                    //            param("type", type)
                     Toast.makeText(baseContext, type, Toast.LENGTH_SHORT).show()
                     Log.d("logEven", type)
                 }
@@ -111,23 +103,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         //firebase crashlytics
-//        crashlytics = Firebase.crashlytics
-//        Log the onCreate event, this will also be printed in logcat
-//        crashlytics.log("onCreate")
         binding.apply {
             btnCrash.setOnClickListener {
-//                Log that crash button was clicked.
-//                crashlytics.log("Crash button clicked")
                 if (checkBoxCrash.isChecked) {
                     try {
                         Log.d("crash", "crash1")
                         throw NullPointerException()
                     } catch (ex: NullPointerException) {
-//                         [START crashlytics_log_and_report]
                         Log.d("crash", "no crash")
-//                        crashlytics.log("NPE caught!")
-//                        crashlytics.recordException(ex)
-//                         [END crashlytics_log_and_report]
                     }
                 } else {
                     Log.d("crash", "crash2")
@@ -135,21 +118,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
-        //firebase remote config
-        val remoteConfig: FirebaseRemoteConfig = Firebase.remoteConfig
-        val configSettings = remoteConfigSettings {
-            minimumFetchIntervalInSeconds = 0
-        }
-        remoteConfig.setConfigSettingsAsync(configSettings)
-        remoteConfig.fetchAndActivate()
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    Log.d(TAG, "Remote Config params updated")
-                } else {
-                    Log.d(TAG, "Failed to update Remote Config params")
-                }
-            }
 
         //firebase realtime database
         binding.apply {
@@ -183,30 +151,11 @@ class MainActivity : AppCompatActivity() {
         //Log token to test send notification for this device
         binding.btnLogToken.setOnClickListener {
             // Get token
-            // [START log_reg_token]
-            Firebase.messaging.token.addOnCompleteListener(
-                OnCompleteListener { task ->
-                    if (!task.isSuccessful) {
-                        Log.w(TAG, "Fetching FCM registration token failed", task.exception)
-                        return@OnCompleteListener
-                    }
-
-                    // Get new FCM registration token
-                    val token = task.result
-
-                    // Log and toast
-                    val msg = getString(R.string.msg_token_fmt, token)
-                    Log.d(TAG, msg)
-                    Toast.makeText(baseContext, msg, Toast.LENGTH_SHORT).show()
-                },
-            )
-            // [END log_reg_token]
+            getTokenFCM()
         }
 
         //firebase google admob
         binding.btnAdMob.setOnClickListener {
-            intent = Intent(this, AdMobActivity::class.java)
-            startActivity(intent)
             finish()
         }
     }

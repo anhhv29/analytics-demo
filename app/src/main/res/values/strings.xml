@@ -1,14 +1,8 @@
 <resources>
-    <string name="app_name" translatable="false">Analytics Firebase</string>
-    <string name="text" translatable="false">Text</string>
-    <string name="image" translatable="false">Image</string>
-    <string name="voice" translatable="false">Voice</string>
-    <string name="food_dialog_title">Which food is your favorite?</string>
-    <array name="food_items">
-        <item>Hot Dogs</item>
-        <item>Hamburgers</item>
-        <item>Pizza</item>
-    </array>
+    <string name="app_name" translatable="false">App Studio</string>
+    <string name="text">Text</string>
+    <string name="image">Image</string>
+    <string name="voice">Voice</string>
     <string name="crash_button_label">Cause Crash</string>
     <string name="catch_crash_checkbox_label">Catch Crash</string>
     <string name="remote_config" translatable="false">Remote Config</string>
@@ -19,7 +13,6 @@
     <string name="read">Read</string>
     <string name="firebase_cloud_message">Firebase Cloud Message</string>
     <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
-    <string name="fcm_message">FCM Message</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string name="admob">AdMob</string>
@@ -28,8 +21,6 @@
 
     <!--    Id Admob Test-->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="open_ad_unit_id">ca-app-pub-3940256099942544/9257395921</string>
-    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
 
 </resources>

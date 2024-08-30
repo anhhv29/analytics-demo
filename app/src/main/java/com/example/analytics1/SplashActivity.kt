@@ -6,7 +6,10 @@ import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.analytics1.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.Firebase
+import com.google.firebase.remoteconfig.remoteConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -73,20 +76,25 @@ class SplashActivity : AppCompatActivity() {
                     secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) + 1
                 }
 
+                val showOpenAd = Firebase.remoteConfig.getBoolean(KEY_AD_OPEN_APP)
                 override fun onFinish() {
                     secondsRemaining = 0
-                    (application as MyApplication).showAdIfAvailable(
-                        this@SplashActivity,
-                        object : MyApplication.OnShowAdCompleteListener {
-                            override fun onShowAdComplete() {
-                                // Check if the consent form is currently on screen before moving to the main
-                                // activity.
-                                if (gatherConsentFinished.get()) {
-                                    startMainActivity()
+                    if (showOpenAd) {
+                        (application as MyApplication).showAdIfAvailable(
+                            this@SplashActivity,
+                            object : MyApplication.OnShowAdCompleteListener {
+                                override fun onShowAdComplete() {
+                                    // Check if the consent form is currently on screen before moving to the main
+                                    // activity.
+                                    if (gatherConsentFinished.get()) {
+                                        startMainActivity()
+                                    }
                                 }
-                            }
-                        },
-                    )
+                            },
+                        )
+                    } else {
+                        startMainActivity()
+                    }
                 }
             }
         countDownTimer.start()

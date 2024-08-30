@@ -26,6 +26,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("debug")
         }
     }
     compileOptions {
@@ -46,18 +47,19 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.preference.ktx)
+    implementation(libs.multidex)
+    implementation(libs.lifecycle.process)
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.firebase.crashlytics)
     implementation(libs.firebase.config)
     implementation(libs.firebase.database)
     implementation(libs.firebase.messaging)
     implementation(libs.play.services.ads)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    implementation(platform(libs.firebase.bom))
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    implementation(libs.androidx.preference.ktx)
-    implementation(libs.multidex)
-    implementation(libs.lifecycle.process)
+    implementation(libs.user.messaging.platform)
 }

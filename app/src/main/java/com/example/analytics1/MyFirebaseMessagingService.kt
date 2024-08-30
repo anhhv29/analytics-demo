@@ -9,13 +9,31 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
+import com.google.firebase.messaging.messaging
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     companion object {
         private const val TAG = "MyFirebaseMsgService"
+
+        fun getTokenFCM() {
+            Firebase.messaging.token.addOnCompleteListener(
+                OnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        Log.w("scp", "Fetching FCM registration token failed", task.exception)
+                        return@OnCompleteListener
+                    }
+                    // Get new FCM registration token
+                    val token = task.result
+                    // Log and toast
+                    Log.d("scp", "token: $token")
+                },
+            )
+        }
     }
 
     override fun onNewToken(token: String) {
@@ -46,7 +64,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION)
         val notificationBuilder = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(R.drawable.ic_stat_ic_notification)
-            .setContentTitle(getString(R.string.fcm_message))
+            .setContentTitle(getString(R.string.app_name))
             .setContentText(messageBody)
             .setAutoCancel(true)
             .setSound(defaultSoundUri)

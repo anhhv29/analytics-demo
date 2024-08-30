@@ -1,52 +1,54 @@
 [versions]
 agp = "8.3.2"
-firebaseBom = "33.2.0"
+firebase-bom = "33.2.0"
 kotlin = "1.9.23"
-coreKtx = "1.13.1"
+core-ktx = "1.13.1"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
+junit-version = "1.2.1"
+espresso-core = "3.6.1"
 appcompat = "1.7.0"
-lifecycleViewmodelKtx = "2.8.4"
+lifecycle-viewmodel-ktx = "2.8.4"
 material = "1.12.0"
 activity = "1.9.1"
 constraintlayout = "2.1.4"
-googleServices = "4.4.2"
-firebaseAnalytics = "22.1.0"
-preferenceKtx = "1.2.1"
-firebaseCrashlytics = "19.0.3"
+google-services = "4.4.2"
+firebase-analytics = "22.1.0"
+preference-ktx = "1.2.1"
+firebase-crashlytics = "19.0.3"
 gradle = "8.1.4"
-firebaseCrashlyticsGradle = "3.0.2"
-firebaseConfig = "22.0.0"
-firebaseDatabase = "21.0.0"
-firebaseMessaging = "24.0.1"
-googlePlayServicesAds = "23.3.0"
+firebase-crashlytics-gradle = "3.0.2"
+firebase-config = "22.0.0"
+firebase-database = "21.0.0"
+firebase-messaging = "24.0.1"
+google-play-services-ads = "23.3.0"
 multidex = "2.0.1"
-lifecycle-process = "2.8.3"
+lifecycle-process = "2.8.4"
+user-messaging-platform = "3.0.0"
 
 [libraries]
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
-androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycleViewmodelKtx" }
-androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preferenceKtx" }
-firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+androidx-lifecycle-viewmodel-ktx = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "lifecycle-viewmodel-ktx" }
+androidx-preference-ktx = { module = "androidx.preference:preference-ktx", version.ref = "preference-ktx" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit-version" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-google-services = { group = "com.google.gms", name = "google-services", version.ref = "googleServices" }
-firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebaseAnalytics" }
-firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebaseCrashlytics" }
+google-services = { group = "com.google.gms", name = "google-services", version.ref = "google-services" }
+firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebase-analytics" }
+firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebase-crashlytics" }
 gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
-firebase-crashlytics-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebaseCrashlyticsGradle" }
-firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebaseConfig" }
-firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
-firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebaseMessaging" }
-play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "googlePlayServicesAds" }
+firebase-crashlytics-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebase-crashlytics-gradle" }
+firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebase-config" }
+firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebase-database" }
+firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebase-messaging" }
+play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "google-play-services-ads" }
 multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
 lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycle-process" }
+user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "user-messaging-platform"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
