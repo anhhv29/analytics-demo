@@ -10,7 +10,7 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
-import com.example.analytics1.util.GoogleMobileAdsConsentManager
+import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.example.analytics1.R
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest

@@ -9,7 +9,7 @@ import com.example.analytics1.application.MyApplication
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivitySplashBinding
 import com.example.analytics1.util.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
-import com.example.analytics1.util.GoogleMobileAdsConsentManager
+import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig

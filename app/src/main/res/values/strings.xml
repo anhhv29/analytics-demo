@@ -16,16 +16,22 @@
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
+    <string name="nothing">Nothing</string>
     <string name="splash">Splash</string>
     <string name="firebase">Firebase</string>
     <string name="admob">AdMob</string>
-    <string name="banner_ads">Banner</string>
-    <string name="interstitial_ads">Interstitial</string>
-    <string name="native_ads">Native</string>
-    <string name="rewarded_ads">Rewarded</string>
+    <string name="txt_banner">Banner</string>
+    <string name="txt_interstitial">Interstitial</string>
+    <string name="txt_native">Native</string>
+    <string name="txt_rewarded">Rewarded</string>
+    <string name="banner_ads">Banner Ads</string>
+    <string name="collapsible_banner_ads">Collapsible banner ads</string>
+    <string name="interstitial_ads">Interstitial Ads</string>
+    <string name="native_ads">Native Ads</string>
+    <string name="rewarded_ads">Rewarded Ads</string>
 
     <!--    Id Admob Test-->
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
     <string name="open_ad_unit_id">ca-app-pub-3940256099942544/9257395921</string>
-
+    <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/9214589741</string>
 </resources>

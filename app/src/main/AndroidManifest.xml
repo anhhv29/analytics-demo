@@ -29,6 +29,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".view.activity.NothingActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.MainActivity"
             android:exported="true" />
         <activity
@@ -37,6 +40,13 @@
         <activity
             android:name=".view.activity.FirebaseActivity"
             android:exported="true" />
+        <activity
+            android:name=".view.activity.BannerActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.BannerAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
 
         <!-- AdMob -->
         <meta-data
@@ -64,7 +74,6 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_stat_ic_notification" />
-
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />

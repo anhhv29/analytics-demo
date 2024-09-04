@@ -9,34 +9,34 @@
     tools:context=".view.activity.AdmobActivity">
 
     <Button
-        android:id="@+id/btnBannerAds"
+        android:id="@+id/btnBanner"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/banner_ads" />
+        android:text="@string/txt_banner" />
 
     <Button
-        android:id="@+id/btnInterstitialAds"
+        android:id="@+id/btnInterstitial"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/interstitial_ads" />
+        android:text="@string/txt_interstitial" />
 
     <Button
-        android:id="@+id/btnNativeAds"
+        android:id="@+id/btnNative"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/native_ads" />
+        android:text="@string/txt_native" />
 
     <Button
-        android:id="@+id/btnRewardedAds"
+        android:id="@+id/btnRewarded"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/rewarded_ads" />
+        android:text="@string/txt_rewarded" />
 </LinearLayout>

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.activity.SplashActivity">
+    tools:context=".view.activity.NothingActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="100dp"
@@ -18,17 +18,9 @@
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:gravity="center"
-        android:text="@string/splash"
+        android:text="@string/nothing"
         android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
-
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_margin="10dp"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/anim_loading" />
 
 </LinearLayout>

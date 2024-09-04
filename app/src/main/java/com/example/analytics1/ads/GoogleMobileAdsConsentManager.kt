@@ -1,4 +1,4 @@
-package com.example.analytics1.util
+package com.example.analytics1.ads
 
 import android.app.Activity
 import android.content.Context
