@@ -1,16 +1,16 @@
-package com.example.analytics1
+package com.example.analytics1.view.activity
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
-import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.example.analytics1.MyUtils.Companion.openActivity
+import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityMainBinding
+import com.example.analytics1.util.MyUtils.Companion.openActivity
 
 /**
  * @Author: anhhv
@@ -19,13 +19,12 @@ import com.example.analytics1.databinding.ActivityMainBinding
  *      -> https://github.com/...
  */
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class MainActivity : BaseActivity<ActivityMainBinding>() {
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityMainBinding =
+        ActivityMainBinding.inflate(layoutInflater)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+    override fun clickView() {
+        super.clickView()
 
         // Override the default implementation when the user presses the back key.
         val onBackPressedCallback: OnBackPressedCallback =

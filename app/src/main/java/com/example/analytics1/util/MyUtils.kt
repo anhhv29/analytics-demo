@@ -1,12 +1,18 @@
-package com.example.analytics1
+package com.example.analytics1.util
 
+import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
+import android.view.WindowManager
 import android.widget.Toast
+import androidx.core.view.WindowInsetsControllerCompat
 
 class MyUtils {
     companion object {
@@ -26,6 +32,29 @@ class MyUtils {
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
         }
 
+        fun Activity.transparentStatusBar() {
+            window.setFlags(
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+            )
+
+            val decorView: View = window.decorView
+            val wic = WindowInsetsControllerCompat(window, decorView)
+            // change status bar fonts color (true is dark)
+            wic.isAppearanceLightStatusBars = false
+        }
+
+        @Suppress("DEPRECATION")
+        fun Activity.hideNavigationBar() {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && Build.VERSION.SDK_INT <= Build.VERSION_CODES.TIRAMISU) {
+                window.insetsController?.hide(WindowInsets.Type.navigationBars())
+                window.insetsController?.systemBarsBehavior =
+                    WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+            }
+            window.decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+        }
+
         fun <T> Context.openActivity(it: Class<T>, extras: Bundle.() -> Unit = {}) {
             val intent = Intent(this, it)
             intent.putExtras(Bundle().apply(extras))
@@ -39,13 +68,13 @@ class MyUtils {
             startActivity(intent)
         }
 
-        fun Context.gotoStore() {
+        fun gotoStore(context: Context) {
             try {
-                this.startActivity(rateIntentForUrl(this, "market://details"))
+                context.startActivity(rateIntentForUrl(context, "market://details"))
             } catch (e: ActivityNotFoundException) {
-                this.startActivity(
+                context.startActivity(
                     rateIntentForUrl(
-                        this,
+                        context,
                         "https://play.google.com/store/apps/details"
                     )
                 )

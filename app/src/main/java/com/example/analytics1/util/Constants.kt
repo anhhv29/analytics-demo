@@ -1,4 +1,4 @@
-package com.example.analytics1
+package com.example.analytics1.util
 
 class Constants {
     class RemoteConfig {
@@ -15,6 +15,12 @@ class Constants {
             const val EVENT_CLICK_TEXT = "android_click_firebase_text"
             const val EVENT_CLICK_IMAGE = "android_click_firebase_image"
             const val EVENT_CLICK_VOICE = "android_click_firebase_voice"
+        }
+    }
+
+    class Language {
+        companion object {
+            const val ENGLISH = "EN"
         }
     }
 }

@@ -24,6 +24,7 @@ google-play-services-ads = "23.3.0"
 multidex = "2.0.1"
 lifecycle-process = "2.8.4"
 user-messaging-platform = "3.0.0"
+lottie = "6.3.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -48,8 +49,8 @@ firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging
 play-services-ads = { group = "com.google.android.gms", name = "play-services-ads", version.ref = "google-play-services-ads" }
 multidex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
 lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycle-process" }
-user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "user-messaging-platform"}
-
+user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "user-messaging-platform" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

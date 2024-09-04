@@ -1,4 +1,4 @@
-package com.example.analytics1
+package com.example.analytics1.util
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -9,6 +9,8 @@ import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.example.analytics1.R
+import com.example.analytics1.view.activity.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.Firebase
 import com.google.firebase.messaging.FirebaseMessagingService

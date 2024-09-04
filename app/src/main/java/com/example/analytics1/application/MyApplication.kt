@@ -1,4 +1,4 @@
-package com.example.analytics1
+package com.example.analytics1.application
 
 import android.app.Activity
 import android.app.Application
@@ -10,6 +10,8 @@ import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
+import com.example.analytics1.util.GoogleMobileAdsConsentManager
+import com.example.analytics1.R
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback

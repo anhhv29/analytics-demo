@@ -1,15 +1,17 @@
-package com.example.analytics1
+package com.example.analytics1.view.activity
 
 import android.graphics.Color
-import android.os.Bundle
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.example.analytics1.Constants.LogEvents.Companion.EVENT_CLICK_IMAGE
-import com.example.analytics1.Constants.LogEvents.Companion.EVENT_CLICK_TEXT
-import com.example.analytics1.Constants.LogEvents.Companion.EVENT_CLICK_VOICE
-import com.example.analytics1.MyFirebaseMessagingService.Companion.getTokenFCM
-import com.example.analytics1.MyUtils.Companion.showToast
+import android.view.LayoutInflater
+import com.example.analytics1.R
+import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityFirebaseBinding
+import com.example.analytics1.util.Constants
+import com.example.analytics1.util.Constants.LogEvents.Companion.EVENT_CLICK_IMAGE
+import com.example.analytics1.util.Constants.LogEvents.Companion.EVENT_CLICK_TEXT
+import com.example.analytics1.util.Constants.LogEvents.Companion.EVENT_CLICK_VOICE
+import com.example.analytics1.util.MyFirebaseMessagingService.Companion.getTokenFCM
+import com.example.analytics1.util.MyUtils.Companion.showToast
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.analytics
@@ -20,15 +22,15 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.remoteconfig.remoteConfig
 
-class FirebaseActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityFirebaseBinding
+class FirebaseActivity : BaseActivity<ActivityFirebaseBinding>() {
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityFirebaseBinding =
+        ActivityFirebaseBinding.inflate(layoutInflater)
+
     private lateinit var firebaseAnalytics: FirebaseAnalytics
     private var text = ""
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityFirebaseBinding.inflate(layoutInflater)
-        setContentView(binding.root)
 
+    override fun clickView() {
+        super.clickView()
         //firebase analytics
         firebaseAnalytics = Firebase.analytics
         binding.apply {

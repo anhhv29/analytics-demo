@@ -62,4 +62,5 @@ dependencies {
     implementation(libs.firebase.messaging)
     implementation(libs.play.services.ads)
     implementation(libs.user.messaging.platform)
+    implementation(libs.lottie)
 }

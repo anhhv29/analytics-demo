@@ -1,12 +1,15 @@
-package com.example.analytics1
+package com.example.analytics1.view.activity
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
-import com.example.analytics1.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
+import android.view.LayoutInflater
+import com.example.analytics1.application.MyApplication
+import com.example.analytics1.base.activity.BaseActivity
+import com.example.analytics1.databinding.ActivitySplashBinding
+import com.example.analytics1.util.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
+import com.example.analytics1.util.GoogleMobileAdsConsentManager
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig
@@ -18,7 +21,9 @@ import java.util.concurrent.atomic.AtomicBoolean
 
 /** Splash Activity that inflates splash activity xml. */
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity<ActivitySplashBinding>() {
+    override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySplashBinding =
+        ActivitySplashBinding.inflate(layoutInflater)
 
     private lateinit var googleMobileAdsConsentManager: GoogleMobileAdsConsentManager
     private val isMobileAdsInitializeCalled = AtomicBoolean(false)
@@ -29,9 +34,8 @@ class SplashActivity : AppCompatActivity() {
         private const val COUNTER_TIME_MILLISECONDS = 5000L
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_splash)
+    override fun initView() {
+        super.initView()
 
         // Log the Mobile Ads SDK version.
         Log.d("scp", "Google Mobile Ads SDK Version: " + MobileAds.getVersion())
