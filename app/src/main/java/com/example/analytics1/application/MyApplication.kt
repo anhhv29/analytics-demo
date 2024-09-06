@@ -163,7 +163,7 @@ class MyApplication :
                         appOpenAd = ad
                         isLoadingAd = false
                         loadTime = Date().time
-                        Log.d("scp", "onAdLoaded.")
+                        Log.d("scp", "AppOpenAd onAdLoaded.")
                     }
 
                     /**
@@ -173,8 +173,7 @@ class MyApplication :
                      */
                     override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                         isLoadingAd = false
-                        Log.d("scp", "onAdFailedToLoad: " + loadAdError.message)
-                        Toast.makeText(context, "onAdFailedToLoad", Toast.LENGTH_SHORT).show()
+                        Log.d("scp", "AppOpenAd onAdFailedToLoad: " + loadAdError.message)
                     }
                 },
             )

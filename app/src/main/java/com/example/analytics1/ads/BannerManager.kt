@@ -2,18 +2,21 @@ package com.example.analytics1.ads
 
 import android.app.Activity
 import android.os.Build
+import android.util.Log
 import android.view.ViewGroup
 import android.view.WindowMetrics
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.LoadAdError
 
 class BannerManager private constructor(
     private val activity: Activity,
     private val adUnitId: String
 ) {
 
-    private lateinit var adView: AdView
+    private var adView: AdView? = null
 
     // Calculate the ad size based on screen width.
     private val mAdSize: AdSize
@@ -41,22 +44,62 @@ class BannerManager private constructor(
         adContainer.removeAllViews()
         adContainer.addView(adView)
 
+        // Listen to ad events.
+        adListener()
+
         // Load the ad.
         val adRequest = AdRequest.Builder().build()
-        adView.loadAd(adRequest)
+        adView?.loadAd(adRequest)
     }
 
     // Optional: Function to clean up resources.
     fun destroyBanner() {
-        adView.destroy()
+        adView?.destroy()
     }
 
     fun pauseBanner() {
-        adView.pause()
+        adView?.pause()
     }
 
     fun resumeBanner() {
-        adView.resume()
+        adView?.resume()
+    }
+
+    private fun adListener() {
+        adView?.adListener = object : AdListener() {
+            override fun onAdClicked() {
+                // Code to be executed when the user clicks on an ad.
+                Log.d("scp", "Banner onAdClicked")
+            }
+
+            override fun onAdClosed() {
+                // Code to be executed when the user is about to return
+                // to the app after tapping on an ad.
+                Log.d("scp", "Banner onAdClosed")
+            }
+
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                // Code to be executed when an ad request fails.
+                Log.d("scp", "Banner onAdFailedToLoad")
+            }
+
+            override fun onAdImpression() {
+                // Code to be executed when an impression is recorded
+                // for an ad.
+                Log.d("scp", "Banner onAdImpression")
+            }
+
+            override fun onAdLoaded() {
+                // Code to be executed when an ad finishes loading.
+                Log.d("scp", "Banner onAdLoaded")
+            }
+
+            override fun onAdOpened() {
+                // Code to be executed when an ad opens an overlay that
+                // covers the screen.
+                Log.d("scp", "Banner onAdOpened")
+            }
+        }
     }
 
     companion object {
