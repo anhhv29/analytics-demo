@@ -15,6 +15,10 @@ class BannerActivity : BaseActivity<ActivityBannerBinding>() {
             btnBannerAds.setOnClickListener {
                 openActivity(BannerAdsActivity::class.java)
             }
+
+            btnCollapsibleBannerAds.setOnClickListener {
+                openActivity(CollapsibleBannerActivity::class.java)
+            }
         }
     }
 }

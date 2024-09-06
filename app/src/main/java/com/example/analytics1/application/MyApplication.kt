@@ -5,13 +5,12 @@ import android.app.Application
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
-import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.example.analytics1.R
+import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.FullScreenContentCallback
@@ -31,6 +30,10 @@ class MyApplication :
 
     private lateinit var appOpenAdManager: AppOpenAdManager
     private var currentActivity: Activity? = null
+
+    companion object {
+        var isShowAppOpenAdComplete = false
+    }
 
     override fun onCreate() {
         super<MultiDexApplication>.onCreate()
@@ -205,6 +208,7 @@ class MyApplication :
                 object : OnShowAdCompleteListener {
                     override fun onShowAdComplete() {
                         // Empty because the user will go back to the activity that shows the ad.
+                        isShowAppOpenAdComplete = true
                     }
                 },
             )
