@@ -63,7 +63,7 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment() {
                 WindowManager.LayoutParams.MATCH_PARENT,
                 WindowManager.LayoutParams.MATCH_PARENT
             )
-        dialog?.window?.setBackgroundDrawableResource(R.color.transparent)
+        dialog?.window?.setBackgroundDrawableResource(R.color.white)
     }
 
     private fun setBackgroundTransparent() {

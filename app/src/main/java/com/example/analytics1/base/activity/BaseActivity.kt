@@ -6,16 +6,20 @@ import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
 import com.example.analytics1.util.Constants.Language.Companion.ENGLISH
 import com.example.analytics1.util.MyUtils.Companion.hideNavigationBar
 import com.example.analytics1.util.MyUtils.Companion.transparentStatusBar
 import com.example.analytics1.util.SharedPreferences
+import com.example.analytics1.view.dialog.LoadingDialog
 import java.util.Locale
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected lateinit var binding: VB
     abstract fun inflateLayout(layoutInflater: LayoutInflater): VB
+
+    private var loadingDialog: LoadingDialog? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,5 +56,22 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
         config.setLocale(locale)
         val base1 = base.createConfigurationContext(config)
         super.attachBaseContext(base1)
+    }
+
+    protected fun showLoading() {
+        val tag = LoadingDialog::class.java.simpleName
+        val existingFragment = supportFragmentManager.findFragmentByTag(tag)
+        if (existingFragment == null || !existingFragment.isAdded) {
+            loadingDialog = LoadingDialog.newInstance()
+            loadingDialog?.show(supportFragmentManager, tag)
+        }
+    }
+
+    protected fun hideLoading() {
+        val tag = LoadingDialog::class.java.simpleName
+        val existingFragment = supportFragmentManager.findFragmentByTag(tag)
+        if (existingFragment != null && existingFragment is DialogFragment) {
+            existingFragment.dismissAllowingStateLoss()
+        }
     }
 }

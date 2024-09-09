@@ -3,10 +3,16 @@ package com.example.analytics1.util
 class Constants {
     class RemoteConfig {
         companion object {
+            @JvmField
+            var lastShowAdFull = 0L
+
             const val SHOW_BACKGROUND_IMAGE = "show_image"
 
             //ads open app
             const val KEY_AD_OPEN_APP = "android_ad_open_app"
+
+            //capping time ads full
+            const val KEY_INTERVAL_AD_FULL = "android_interval_ad_full"
         }
     }
 

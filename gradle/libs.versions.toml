@@ -25,6 +25,10 @@ multidex = "2.0.1"
 lifecycle-process = "2.8.4"
 user-messaging-platform = "3.0.0"
 lottie = "6.3.0"
+gson = "2.10.1"
+retrofit = "2.9.0"
+retrofit-converter-gson = "2.9.0"
+glide = "4.16.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -51,6 +55,11 @@ multidex = { group = "androidx.multidex", name = "multidex", version.ref = "mult
 lifecycle-process = { group = "androidx.lifecycle", name = "lifecycle-process", version.ref = "lifecycle-process" }
 user-messaging-platform = { group = "com.google.android.ump", name = "user-messaging-platform", version.ref = "user-messaging-platform" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit-converter-gson" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }

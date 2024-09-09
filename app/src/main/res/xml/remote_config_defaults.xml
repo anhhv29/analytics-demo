@@ -5,4 +5,8 @@
         <value>true</value>
     </entry>
 
+    <entry>
+        <key>android_interval_ad_full</key>
+        <value>15000</value>
+    </entry>
 </defaults>

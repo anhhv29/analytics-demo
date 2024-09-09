@@ -63,4 +63,8 @@ dependencies {
     implementation(libs.play.services.ads)
     implementation(libs.user.messaging.platform)
     implementation(libs.lottie)
+    implementation(libs.gson)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.gson)
+    implementation(libs.glide)
 }

@@ -27,7 +27,7 @@ class AdmobActivity : BaseActivity<ActivityAdmobBinding>() {
             }
 
             btnInterstitial.setOnClickListener {
-
+                openActivity(InterstitialActivity::class.java)
             }
 
             btnNative.setOnClickListener {

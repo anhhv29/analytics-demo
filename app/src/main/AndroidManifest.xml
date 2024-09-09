@@ -31,6 +31,9 @@
             android:name=".view.activity.NothingActivity"
             android:exported="true" />
         <activity
+            android:name=".view.activity.ResultActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.MainActivity"
             android:exported="true" />
         <activity
@@ -51,6 +54,15 @@
             android:exported="true"
             android:hardwareAccelerated="true" />
 
+        <activity
+            android:name=".view.activity.InterstitialActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+
+        <activity
+            android:name=".view.activity.InterstitialAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
         <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
@@ -76,7 +88,7 @@
 
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
-            android:resource="@drawable/ic_stat_ic_notification" />
+            android:resource="@drawable/ic_start_ic_notification" />
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />

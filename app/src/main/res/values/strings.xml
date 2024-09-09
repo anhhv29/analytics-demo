@@ -16,6 +16,8 @@
     <string name="default_notification_channel_id">fcm_default_channel</string>
     <string name="log_token">Log Token</string>
     <string name="msg_token_fmt">FCM registration Token: %s</string>
+    <string name="preparing_data">Preparing Data</string>
+    <string name="this_action_can_contain_ads">This action can contain ads</string>
     <string name="nothing">Nothing</string>
     <string name="splash">Splash</string>
     <string name="firebase">Firebase</string>
@@ -27,6 +29,9 @@
     <string name="banner_ads">Banner Ads</string>
     <string name="collapsible_banner_ads">Collapsible banner ads</string>
     <string name="interstitial_ads">Interstitial Ads</string>
+    <string name="txt_layout_show_interstitial">Layout Show Interstitial</string>
+    <string name="txt_item_show_interstitial">Item Show Interstitial</string>
+    <string name="txt_interstitial_with_capping_time">Interstitial With Capping Time</string>
     <string name="native_ads">Native Ads</string>
     <string name="rewarded_ads">Rewarded Ads</string>
 
@@ -35,4 +40,6 @@
     <string name="open_ad_unit_id">ca-app-pub-3940256099942544/9257395921</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/9214589741</string>
     <string name="collapsible_banner_ad_unit_id">ca-app-pub-3940256099942544/2014213617</string>
+    <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="ads_ad">AD</string>
 </resources>
