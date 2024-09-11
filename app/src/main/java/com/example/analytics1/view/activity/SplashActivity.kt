@@ -5,11 +5,12 @@ import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.LayoutInflater
+import com.example.analytics1.ads.AppOpenAdManager
+import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.example.analytics1.application.MyApplication
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivitySplashBinding
 import com.example.analytics1.util.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
-import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.google.android.gms.ads.MobileAds
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig
@@ -86,7 +87,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                     if (showOpenAd) {
                         (application as MyApplication).showAdIfAvailable(
                             this@SplashActivity,
-                            object : MyApplication.OnShowAdCompleteListener {
+                            object : AppOpenAdManager.OnShowOpenAdCompleteListener {
                                 override fun onShowAdComplete() {
                                     // Check if the consent form is currently on screen before moving to the main
                                     // activity.

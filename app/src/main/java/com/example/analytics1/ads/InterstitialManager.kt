@@ -67,6 +67,7 @@ class InterstitialManager private constructor(
                     lastShowAdFull = System.currentTimeMillis()
                     afterShowAd.invoke()
                     loadAd(afterLoadAd = {})
+                    AppOpenAdManager.adFullShowing = false
                 }
 
                 override fun onAdFailedToShowFullScreenContent(adError: AdError) {
@@ -75,6 +76,7 @@ class InterstitialManager private constructor(
                     lastShowAdFull = System.currentTimeMillis()
                     afterShowAd.invoke()
                     loadAd(afterLoadAd = {})
+                    AppOpenAdManager.adFullShowing = false
                 }
 
                 override fun onAdImpression() {
@@ -83,6 +85,7 @@ class InterstitialManager private constructor(
 
                 override fun onAdShowedFullScreenContent() {
                     Log.d("scp", "showInterstitial onAdShowedFullScreenContent")
+                    AppOpenAdManager.adFullShowing = true
                 }
             }
             it.show(activity)
@@ -90,7 +93,6 @@ class InterstitialManager private constructor(
             loadAd(afterLoadAd = {})
         }
     }
-
 
     // Show the interstitial ad with capping time
     private fun checkCappingTime(): Boolean {
@@ -117,6 +119,7 @@ class InterstitialManager private constructor(
                     lastShowAdFull = System.currentTimeMillis()
                     afterShowAd.invoke()
                     loadAd(afterLoadAd = {})
+                    AppOpenAdManager.adFullShowing = false
                 }
 
                 override fun onAdFailedToShowFullScreenContent(adError: AdError) {
@@ -128,6 +131,7 @@ class InterstitialManager private constructor(
                     lastShowAdFull = System.currentTimeMillis()
                     afterShowAd.invoke()
                     loadAd(afterLoadAd = {})
+                    AppOpenAdManager.adFullShowing = false
                 }
 
                 override fun onAdImpression() {
@@ -136,6 +140,7 @@ class InterstitialManager private constructor(
 
                 override fun onAdShowedFullScreenContent() {
                     Log.d("scp", "showInterstitialWithCappingTime onAdShowedFullScreenContent")
+                    AppOpenAdManager.adFullShowing = true
                 }
             }
             interstitialAd?.show(activity)

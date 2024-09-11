@@ -35,7 +35,7 @@ class AdmobActivity : BaseActivity<ActivityAdmobBinding>() {
             }
 
             btnRewarded.setOnClickListener {
-
+                openActivity(RewardedActivity::class.java)
             }
         }
     }

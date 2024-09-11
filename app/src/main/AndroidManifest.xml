@@ -53,14 +53,16 @@
             android:name=".view.activity.CollapsibleBannerActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
-
         <activity
             android:name=".view.activity.InterstitialActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
-
         <activity
             android:name=".view.activity.InterstitialAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.RewardedActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <!-- AdMob -->

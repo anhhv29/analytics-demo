@@ -2,7 +2,6 @@ package com.example.analytics1.application
 
 import android.app.Activity
 import android.app.Application
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
@@ -10,19 +9,12 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
 import androidx.multidex.MultiDexApplication
 import com.example.analytics1.R
-import com.example.analytics1.ads.GoogleMobileAdsConsentManager
-import com.google.android.gms.ads.AdError
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.FullScreenContentCallback
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.appopen.AppOpenAd
-import com.google.android.gms.ads.appopen.AppOpenAd.AppOpenAdLoadCallback
+import com.example.analytics1.ads.AppOpenAdManager
 import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import com.google.firebase.remoteconfig.remoteConfig
 import com.google.firebase.remoteconfig.remoteConfigSettings
-import java.util.Date
 
 /** Application class that initializes, loads and show ads when activities change states. */
 class MyApplication :
@@ -31,16 +23,13 @@ class MyApplication :
     private lateinit var appOpenAdManager: AppOpenAdManager
     private var currentActivity: Activity? = null
 
-    companion object {
-        var isShowAppOpenAdComplete = false
-    }
-
     override fun onCreate() {
         super<MultiDexApplication>.onCreate()
         registerActivityLifecycleCallbacks(this)
 
         ProcessLifecycleOwner.get().lifecycle.addObserver(this)
-        appOpenAdManager = AppOpenAdManager()
+        appOpenAdManager =
+            AppOpenAdManager.newInstance(getString(R.string.open_ad_unit_id))
     }
 
     /**
@@ -48,6 +37,13 @@ class MyApplication :
      */
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
+
+        // If the ad Interstitial or Rewarded is already showing, do not show the ad AppOpenAd.
+        if (AppOpenAdManager.adFullShowing) {
+            Log.d("scp", "The app open ad is adFullShowing.")
+            return
+        }
+
         currentActivity?.let {
             remoteConfigs()
             // Show the ad (if available) when the app moves to foreground.
@@ -99,10 +95,13 @@ class MyApplication :
     /**
      * Shows an app open ad.
      *
-     * @param activity the activity that shows the app open ad
-     * @param onShowAdCompleteListener the listener to be notified when an app open ad is complete
+     * param activity the activity that shows the app open ad
+     * param onShowAdCompleteListener the listener to be notified when an app open ad is complete
      */
-    fun showAdIfAvailable(activity: Activity, onShowAdCompleteListener: OnShowAdCompleteListener) {
+    fun showAdIfAvailable(
+        activity: Activity,
+        onShowAdCompleteListener: AppOpenAdManager.OnShowOpenAdCompleteListener
+    ) {
         // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
         // class.
         appOpenAdManager.showAdIfAvailable(activity, onShowAdCompleteListener)
@@ -111,169 +110,11 @@ class MyApplication :
     /**
      * Load an app open ad.
      *
-     * @param activity the activity that shows the app open ad
+     * param activity the activity that shows the app open ad
      */
     fun loadAd(activity: Activity) {
         // We wrap the loadAd to enforce that other classes only interact with MyApplication
         // class.
         appOpenAdManager.loadAd(activity)
-    }
-
-    /**
-     * Interface definition for a callback to be invoked when an app open ad is complete (i.e.
-     * dismissed or fails to show).
-     */
-    interface OnShowAdCompleteListener {
-        fun onShowAdComplete()
-    }
-
-    /** Inner class that loads and shows app open ads. */
-    private inner class AppOpenAdManager {
-
-        private var googleMobileAdsConsentManager: GoogleMobileAdsConsentManager =
-            GoogleMobileAdsConsentManager.getInstance(applicationContext)
-        private var appOpenAd: AppOpenAd? = null
-        private var isLoadingAd = false
-        var isShowingAd = false
-
-        /** Keep track of the time an app open ad is loaded to ensure you don't show an expired ad. */
-        private var loadTime: Long = 0
-
-        /**
-         * Load an ad.
-         *
-         * @param context the context of the activity that loads the ad
-         */
-        fun loadAd(context: Context) {
-            // Do not load ad if there is an unused ad or one is already loading.
-            if (isLoadingAd || isAdAvailable()) {
-                return
-            }
-
-            isLoadingAd = true
-            val request = AdRequest.Builder().build()
-            AppOpenAd.load(
-                context,
-                getString(R.string.open_ad_unit_id),
-                request,
-                object : AppOpenAdLoadCallback() {
-                    /**
-                     * Called when an app open ad has loaded.
-                     *
-                     * @param ad the loaded app open ad.
-                     */
-                    override fun onAdLoaded(ad: AppOpenAd) {
-                        appOpenAd = ad
-                        isLoadingAd = false
-                        loadTime = Date().time
-                        Log.d("scp", "AppOpenAd onAdLoaded.")
-                    }
-
-                    /**
-                     * Called when an app open ad has failed to load.
-                     *
-                     * @param loadAdError the error.
-                     */
-                    override fun onAdFailedToLoad(loadAdError: LoadAdError) {
-                        isLoadingAd = false
-                        Log.d("scp", "AppOpenAd onAdFailedToLoad: " + loadAdError.message)
-                    }
-                },
-            )
-        }
-
-        /** Check if ad was loaded more than n hours ago. */
-        private fun wasLoadTimeLessThanNHoursAgo(numHours: Long): Boolean {
-            val dateDifference: Long = Date().time - loadTime
-            val numMilliSecondsPerHour: Long = 3600000
-            return dateDifference < numMilliSecondsPerHour * numHours
-        }
-
-        /** Check if ad exists and can be shown. */
-        private fun isAdAvailable(): Boolean {
-            // Ad references in the app open beta will time out after four hours, but this time limit
-            // may change in future beta versions. For details, see:
-            // https://support.google.com/admob/answer/9341964?hl=en
-            return appOpenAd != null && wasLoadTimeLessThanNHoursAgo(4)
-        }
-
-        /**
-         * Show the ad if one isn't already showing.
-         *
-         * @param activity the activity that shows the app open ad
-         */
-        fun showAdIfAvailable(activity: Activity) {
-            showAdIfAvailable(
-                activity,
-                object : OnShowAdCompleteListener {
-                    override fun onShowAdComplete() {
-                        // Empty because the user will go back to the activity that shows the ad.
-                        isShowAppOpenAdComplete = true
-                    }
-                },
-            )
-        }
-
-        /**
-         * Show the ad if one isn't already showing.
-         *
-         * @param activity the activity that shows the app open ad
-         * @param onShowAdCompleteListener the listener to be notified when an app open ad is complete
-         */
-        fun showAdIfAvailable(
-            activity: Activity,
-            onShowAdCompleteListener: OnShowAdCompleteListener
-        ) {
-            // If the app open ad is already showing, do not show the ad again.
-            if (isShowingAd) {
-                Log.d("scp", "The app open ad is already showing.")
-                return
-            }
-
-            // If the app open ad is not available yet, invoke the callback.
-            if (!isAdAvailable()) {
-                Log.d("scp", "The app open ad is not ready yet.")
-                onShowAdCompleteListener.onShowAdComplete()
-                if (googleMobileAdsConsentManager.canRequestAds) {
-                    loadAd(activity)
-                }
-                return
-            }
-
-            Log.d("scp", "Will show ad.")
-
-            appOpenAd?.fullScreenContentCallback =
-                object : FullScreenContentCallback() {
-                    /** Called when full screen content is dismissed. */
-                    override fun onAdDismissedFullScreenContent() {
-                        // Set the reference to null so isAdAvailable() returns false.
-                        appOpenAd = null
-                        isShowingAd = false
-                        Log.d("scp", "onAdDismissedFullScreenContent.")
-                        onShowAdCompleteListener.onShowAdComplete()
-                        if (googleMobileAdsConsentManager.canRequestAds) {
-                            loadAd(activity)
-                        }
-                    }
-
-                    /** Called when fullscreen content failed to show. */
-                    override fun onAdFailedToShowFullScreenContent(adError: AdError) {
-                        appOpenAd = null
-                        isShowingAd = false
-                        Log.d("scp", "onAdFailedToShowFullScreenContent: " + adError.message)
-                        onShowAdCompleteListener.onShowAdComplete()
-                        if (googleMobileAdsConsentManager.canRequestAds) {
-                            loadAd(activity)
-                        }
-                    }
-
-                    /** Called when fullscreen content is shown. */
-                    override fun onAdShowedFullScreenContent() {
-                        Log.d("scp", "onAdShowedFullScreenContent.")
-                    }
-                }
-            isShowingAd = true
-            appOpenAd?.show(activity)
-        }
     }
 }
