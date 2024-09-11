@@ -55,6 +55,7 @@ class InterstitialAdsActivity : BaseActivity<ActivityInterstitialAdsBinding>() {
                 eventAfterClickItem(itemDemoModel)
             })
         } else {
+            //premium
             eventAfterClickItem(itemDemoModel)
         }
     }

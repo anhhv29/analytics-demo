@@ -11,14 +11,18 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.example.analytics1.databinding.ItemDemoBinding
+import com.example.analytics1.enums.TypeData
+import com.example.analytics1.interfaces.ItemRewardedClickListener
 import com.example.analytics1.model.ItemDemoModel
 import com.example.analytics1.util.MyUtils.Companion.goneView
+import com.example.analytics1.util.MyUtils.Companion.visibleView
+import com.example.analytics1.util.SharedPreferences
 
-class InterstitialDemoAdapter(
+class RewardedDemoAdapter(
     private var context: Context,
-    originList: MutableList<ItemDemoModel>
-) : RecyclerView.Adapter<InterstitialDemoAdapter.ViewHolder>() {
-    private lateinit var itemClickListener: ItemClickListener
+    originList: MutableList<ItemDemoModel>,
+    private var itemClickListener: ItemRewardedClickListener
+) : RecyclerView.Adapter<RewardedDemoAdapter.ViewHolder>() {
     private var mList = originList
 
     class ViewHolder(val binding: ItemDemoBinding) : RecyclerView.ViewHolder(binding.root)
@@ -56,6 +60,12 @@ class InterstitialDemoAdapter(
 
                 }).into(image)
 
+            if (!SharedPreferences.isProApp(context) && mList[itemPosition].type == TypeData.ADS.name) {
+                holder.binding.tvAds.visibleView()
+            } else {
+                holder.binding.tvAds.goneView()
+            }
+
             image.setOnClickListener {
                 itemClickListener.eventClick(mList[itemPosition])
             }
@@ -64,13 +74,5 @@ class InterstitialDemoAdapter(
 
     override fun getItemCount(): Int {
         return mList.size
-    }
-
-    interface ItemClickListener {
-        fun eventClick(itemDemoModel: ItemDemoModel)
-    }
-
-    fun setClickListener(clickListener: ItemClickListener) {
-        this.itemClickListener = clickListener
     }
 }

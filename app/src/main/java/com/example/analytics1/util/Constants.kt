@@ -29,4 +29,11 @@ class Constants {
             const val ENGLISH = "EN"
         }
     }
+
+    class TypeData {
+        companion object {
+            const val FREE = "FREE"
+            const val ADS = "ADS"
+        }
+    }
 }

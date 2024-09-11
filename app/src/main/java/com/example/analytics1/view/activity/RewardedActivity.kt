@@ -26,7 +26,7 @@ class RewardedActivity : BaseActivity<ActivityRewardedBinding>() {
             }
 
             btnItemShowRewarded.setOnClickListener {
-                //
+                openActivity(RewardedAdsActivity::class.java)
             }
         }
     }

@@ -65,6 +65,10 @@
             android:name=".view.activity.RewardedActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.RewardedAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
         <!-- AdMob -->
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
