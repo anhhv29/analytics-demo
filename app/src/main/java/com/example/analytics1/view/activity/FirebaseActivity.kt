@@ -95,7 +95,7 @@ class FirebaseActivity : BaseActivity<ActivityFirebaseBinding>() {
             val showImage: Boolean =
                 Firebase.remoteConfig.getBoolean(Constants.RemoteConfig.SHOW_BACKGROUND_IMAGE)
             if (showImage) {
-                binding.ivRemote.setBackgroundResource(R.drawable.firebase_lockup)
+                binding.ivRemote.setBackgroundResource(R.drawable.ic_firebase_lockup)
             } else binding.ivRemote.setBackgroundColor(Color.TRANSPARENT)
 
             //Log token to test send notification for this device

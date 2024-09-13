@@ -13,12 +13,11 @@
         android:layout_height="100dp"
         android:layout_marginTop="100dp" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvResult"
         android:layout_width="wrap_content"
         android:layout_height="45dp"
         android:gravity="center"
-        android:textColor="@android:color/black"
         android:textSize="24sp"
         android:textStyle="bold" />
 

@@ -22,12 +22,11 @@
             android:layout_height="100dp"
             app:srcCompat="@drawable/ic_admob" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:gravity="center"
             android:text="@string/txt_item_show_rewarded"
-            android:textColor="@android:color/black"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
