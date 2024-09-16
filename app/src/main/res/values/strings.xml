@@ -33,6 +33,14 @@
     <string name="txt_item_show_interstitial">Item Show Interstitial</string>
     <string name="txt_interstitial_with_capping_time">Interstitial With Capping Time</string>
     <string name="native_ads">Native Ads</string>
+    <string name="txt_native_banner">Native Banner</string>
+    <string name="txt_native_small">Native Small</string>
+    <string name="txt_native_medium">Native Medium</string>
+    <string name="txt_native_large">Native Large</string>
+    <string name="txt_native_inline">Native Inline</string>
+    <string name="txt_native_banner_ads">Native Banner Ads</string>
+    <string name="txt_native_banner_old">Native Banner Old</string>
+    <string name="txt_native_banner_smart">Native Banner Smart</string>
     <string name="rewarded_ads">Rewarded Ads</string>
     <string name="txt_layout_show_rewarded">Layout Show Rewarded</string>
     <string name="txt_item_show_rewarded">Item Show Rewarded</string>

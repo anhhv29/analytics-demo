@@ -83,7 +83,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:gravity="center"
-            android:text="@string/crash_button_label" />
+            android:text="@string/crash_button_label"
+            tools:textColor="@color/white" />
 
         <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkBoxCrash"
@@ -172,6 +173,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="20dp"
-            android:text="@string/log_token" />
+            android:text="@string/log_token"
+            tools:textColor="@color/white" />
     </LinearLayout>
 </LinearLayout>

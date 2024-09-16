@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/firebase" />
+        android:text="@string/firebase"
+        tools:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnAdMob"
@@ -22,6 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/admob" />
+        android:text="@string/admob"
+        tools:textColor="@color/white" />
 
 </LinearLayout>

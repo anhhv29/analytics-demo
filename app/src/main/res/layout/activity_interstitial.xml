@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_layout_show_interstitial" />
+        android:text="@string/txt_layout_show_interstitial"
+        tools:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnItemShowInterstitial"
@@ -22,7 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_item_show_interstitial" />
+        android:text="@string/txt_item_show_interstitial"
+        tools:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnInterstitialWithCappingTime"
@@ -30,5 +32,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_interstitial_with_capping_time" />
+        android:text="@string/txt_interstitial_with_capping_time"
+        tools:textColor="@color/white" />
 </LinearLayout>

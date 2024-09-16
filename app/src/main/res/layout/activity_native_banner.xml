@@ -6,41 +6,33 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.activity.AdmobActivity">
+    tools:context=".view.activity.NativeBannerActivity">
 
     <Button
-        android:id="@+id/btnBanner"
+        android:id="@+id/btnNativeBanner"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_banner"
+        android:text="@string/txt_native_banner_ads"
         tools:textColor="@color/white" />
 
     <Button
-        android:id="@+id/btnInterstitial"
+        android:id="@+id/btnNativeBannerOld"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_interstitial"
+        android:text="@string/txt_native_banner_old"
         tools:textColor="@color/white" />
 
     <Button
-        android:id="@+id/btnNative"
+        android:id="@+id/btnNativeBannerSmart"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_native"
+        android:text="@string/txt_native_banner_smart"
         tools:textColor="@color/white" />
 
-    <Button
-        android:id="@+id/btnRewarded"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:text="@string/txt_rewarded"
-        tools:textColor="@color/white" />
 </LinearLayout>

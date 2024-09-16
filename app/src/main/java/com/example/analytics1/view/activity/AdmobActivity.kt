@@ -29,7 +29,7 @@ class AdmobActivity : BaseActivity<ActivityAdmobBinding>() {
             }
 
             btnNative.setOnClickListener {
-
+                openActivity(NativeActivity::class.java)
             }
 
             btnRewarded.setOnClickListener {

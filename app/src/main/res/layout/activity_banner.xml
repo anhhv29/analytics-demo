@@ -14,7 +14,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/banner_ads" />
+        android:text="@string/banner_ads"
+        tools:textColor="@color/white" />
 
     <Button
         android:id="@+id/btnCollapsibleBannerAds"
@@ -22,5 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/collapsible_banner_ads" />
+        android:text="@string/collapsible_banner_ads"
+        tools:textColor="@color/white" />
 </LinearLayout>

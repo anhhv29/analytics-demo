@@ -70,6 +70,26 @@
             android:name=".view.activity.RewardedAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeBannerActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeBannerAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeBannerOldActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeBannerSmartActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
 
         <!-- AdMob -->
         <meta-data
