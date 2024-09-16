@@ -1,6 +1,5 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.analytics1.R
 import com.example.analytics1.ads.InterstitialManager
@@ -13,8 +12,7 @@ import com.example.analytics1.util.SharedPreferences
 import com.example.analytics1.view.adapter.InterstitialDemoAdapter
 
 class InterstitialAdsActivity : BaseActivity<ActivityInterstitialAdsBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityInterstitialAdsBinding =
-        ActivityInterstitialAdsBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityInterstitialAdsBinding.inflate(layoutInflater)
 
     private var interstitialManager: InterstitialManager? = null
     private var mAdapter: InterstitialDemoAdapter? = null

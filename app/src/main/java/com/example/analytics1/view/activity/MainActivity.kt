@@ -3,7 +3,6 @@ package com.example.analytics1.view.activity
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
-import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -20,8 +19,7 @@ import com.example.analytics1.util.MyUtils.Companion.openActivity
  */
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityMainBinding =
-        ActivityMainBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityMainBinding.inflate(layoutInflater)
 
     override fun clickView() {
         super.clickView()

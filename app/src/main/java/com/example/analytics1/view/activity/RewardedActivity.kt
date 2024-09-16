@@ -1,6 +1,5 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.ads.RewardedManager
 import com.example.analytics1.base.activity.BaseActivity
@@ -9,8 +8,7 @@ import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.util.SharedPreferences
 
 class RewardedActivity : BaseActivity<ActivityRewardedBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityRewardedBinding =
-        ActivityRewardedBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityRewardedBinding.inflate(layoutInflater)
 
     private var rewardedManager: RewardedManager? = null
 

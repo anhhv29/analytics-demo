@@ -1,6 +1,5 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.analytics1.R
 import com.example.analytics1.ads.RewardedManager
@@ -15,8 +14,7 @@ import com.example.analytics1.util.SharedPreferences
 import com.example.analytics1.view.adapter.RewardedDemoAdapter
 
 class RewardedAdsActivity : BaseActivity<ActivityRewardedAdsBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityRewardedAdsBinding =
-        ActivityRewardedAdsBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityRewardedAdsBinding.inflate(layoutInflater)
 
     private var rewardedManager: RewardedManager? = null
     private var mAdapter: RewardedDemoAdapter? = null

@@ -1,9 +1,7 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.ads.CollapsibleBannerManager
-import com.example.analytics1.application.MyApplication
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityCollapsibleBannerBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
@@ -13,8 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CollapsibleBannerActivity : BaseActivity<ActivityCollapsibleBannerBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityCollapsibleBannerBinding =
-        ActivityCollapsibleBannerBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityCollapsibleBannerBinding.inflate(layoutInflater)
 
     private var collapsibleBannerManager: CollapsibleBannerManager? = null
 

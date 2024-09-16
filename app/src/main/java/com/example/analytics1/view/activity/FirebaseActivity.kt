@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.base.activity.BaseActivity
+import com.example.analytics1.databinding.ActivityBannerBinding
 import com.example.analytics1.databinding.ActivityFirebaseBinding
 import com.example.analytics1.util.Constants
 import com.example.analytics1.util.Constants.LogEvents.Companion.EVENT_CLICK_IMAGE
@@ -23,8 +24,7 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.remoteconfig.remoteConfig
 
 class FirebaseActivity : BaseActivity<ActivityFirebaseBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityFirebaseBinding =
-        ActivityFirebaseBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityFirebaseBinding.inflate(layoutInflater)
 
     private lateinit var firebaseAnalytics: FirebaseAnalytics
     private var text = ""

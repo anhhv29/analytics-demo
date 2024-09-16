@@ -1,6 +1,5 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.ads.BannerManager
 import com.example.analytics1.base.activity.BaseActivity
@@ -12,8 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class BannerAdsActivity : BaseActivity<ActivityBannerAdsBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityBannerAdsBinding =
-        ActivityBannerAdsBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityBannerAdsBinding.inflate(layoutInflater)
 
     private var bannerManager: BannerManager? = null
     override fun loadAds() {

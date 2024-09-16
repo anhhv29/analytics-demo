@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
-import android.view.LayoutInflater
 import com.example.analytics1.ads.AppOpenAdManager
 import com.example.analytics1.ads.GoogleMobileAdsConsentManager
 import com.example.analytics1.application.MyApplication
@@ -23,8 +22,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 /** Splash Activity that inflates splash activity xml. */
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity<ActivitySplashBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivitySplashBinding =
-        ActivitySplashBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivitySplashBinding.inflate(layoutInflater)
 
     private lateinit var googleMobileAdsConsentManager: GoogleMobileAdsConsentManager
     private val isMobileAdsInitializeCalled = AtomicBoolean(false)

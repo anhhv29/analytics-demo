@@ -14,17 +14,17 @@ import androidx.viewbinding.ViewBinding
 import com.example.analytics1.R
 
 abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment() {
-    protected lateinit var viewBinding: VB
-    abstract fun inflateViewBinding(inflater: LayoutInflater, container: ViewGroup?): VB
-
+    lateinit var binding: VB
+    abstract fun getFragmentBinding(): VB
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        preloadData()
         setBackgroundTransparent()
-        viewBinding = inflateViewBinding(inflater, container)
-        return viewBinding.root
+        binding = getFragmentBinding()
+        return binding.root
     }
 
     override fun onResume() {
@@ -51,9 +51,11 @@ abstract class BaseDialogFragment<VB : ViewBinding> : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initView()
         clickView()
     }
-
+    open fun preloadData() {}
+    open fun initView() {}
     open fun clickView() {}
 
     override fun onStart() {

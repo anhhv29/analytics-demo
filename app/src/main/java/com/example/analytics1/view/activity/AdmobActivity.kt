@@ -1,14 +1,12 @@
 package com.example.analytics1.view.activity
 
-import android.view.LayoutInflater
 import androidx.activity.OnBackPressedCallback
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityAdmobBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 
 class AdmobActivity : BaseActivity<ActivityAdmobBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityAdmobBinding =
-        ActivityAdmobBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityAdmobBinding.inflate(layoutInflater)
 
     override fun clickView() {
         super.clickView()

@@ -1,7 +1,6 @@
 package com.example.analytics1.view.activity
 
 import android.util.Log
-import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.ads.InterstitialManager
 import com.example.analytics1.base.activity.BaseActivity
@@ -13,8 +12,7 @@ import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig
 
 class InterstitialActivity : BaseActivity<ActivityInterstitialBinding>() {
-    override fun inflateLayout(layoutInflater: LayoutInflater): ActivityInterstitialBinding =
-        ActivityInterstitialBinding.inflate(layoutInflater)
+    override fun getActivityBinding() = ActivityInterstitialBinding.inflate(layoutInflater)
 
     private var interstitialManager: InterstitialManager? = null
     override fun loadAds() {

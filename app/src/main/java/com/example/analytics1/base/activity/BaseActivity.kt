@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.DialogFragment
 import androidx.viewbinding.ViewBinding
@@ -17,14 +16,13 @@ import java.util.Locale
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     protected lateinit var binding: VB
-    abstract fun inflateLayout(layoutInflater: LayoutInflater): VB
-
+    abstract fun getActivityBinding(): VB
     private var loadingDialog: LoadingDialog? = null
 
     @SuppressLint("SourceLockedOrientationActivity")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = inflateLayout(layoutInflater)
+        binding = getActivityBinding()
         setContentView(binding.root)
         transparentStatusBar()
         requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
