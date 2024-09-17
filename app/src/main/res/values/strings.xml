@@ -41,6 +41,7 @@
     <string name="txt_native_banner_ads">Native Banner Ads</string>
     <string name="txt_native_banner_old">Native Banner Old</string>
     <string name="txt_native_banner_smart">Native Banner Smart</string>
+    <string name="txt_native_load_multiple_ads">Native Load Multiple Ads</string>
     <string name="rewarded_ads">Rewarded Ads</string>
     <string name="txt_layout_show_rewarded">Layout Show Rewarded</string>
     <string name="txt_item_show_rewarded">Item Show Rewarded</string>
@@ -51,6 +52,7 @@
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/9214589741</string>
     <string name="collapsible_banner_ad_unit_id">ca-app-pub-3940256099942544/2014213617</string>
     <string name="interstitial_ad_unit_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="native_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
     <string name="rewarded_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
     <string name="ad">Ad</string>
 </resources>

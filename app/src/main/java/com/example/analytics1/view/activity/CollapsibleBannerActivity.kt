@@ -19,8 +19,6 @@ class CollapsibleBannerActivity : BaseActivity<ActivityCollapsibleBannerBinding>
         super.loadAds()
 
         CoroutineScope(Dispatchers.IO).launch {
-            // Initialize the Google Mobile Ads SDK on a background thread.
-            MobileAds.initialize(this@CollapsibleBannerActivity) {}
             runOnUiThread {
                 // Load an ad on the main thread.
                 collapsibleBannerManager = CollapsibleBannerManager.newInstance(

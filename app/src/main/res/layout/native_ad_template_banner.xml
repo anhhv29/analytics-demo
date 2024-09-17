@@ -2,16 +2,18 @@
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nativeAdView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:background="#DCDCDC">
+    android:background="#DCDCDC">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <!-- Icon -->
         <androidx.constraintlayout.utils.widget.ImageFilterView
-            android:id="@+id/ad_app_icon"
+            android:id="@+id/ad_icon"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginStart="8dp"
@@ -26,7 +28,8 @@
             app:round="8dp"
             tools:background="#FF5722" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <!-- Headline (required) -->
+        <TextView
             android:id="@+id/ad_headline"
             style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="0dp"
@@ -38,7 +41,7 @@
             android:maxLines="1"
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ad_app_icon"
+            app:layout_constraintStart_toEndOf="@+id/ad_icon"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="Test Ad: Google Ads" />
 
@@ -55,10 +58,11 @@
             android:textColor="@color/black"
             android:textSize="11sp"
             app:layout_constraintBottom_toBottomOf="@+id/ad_body"
-            app:layout_constraintStart_toEndOf="@+id/ad_app_icon"
+            app:layout_constraintStart_toEndOf="@+id/ad_icon"
             app:layout_constraintTop_toTopOf="@+id/ad_body" />
 
-        <com.google.android.material.textview.MaterialTextView
+        <!-- Body -->
+        <TextView
             android:id="@+id/ad_body"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -74,7 +78,8 @@
             app:layout_constraintTop_toBottomOf="@+id/ad_headline"
             tools:text="@tools:sample/lorem/random" />
 
-        <com.google.android.material.button.MaterialButton
+        <!-- Call to Action (required) -->
+        <Button
             android:id="@+id/ad_call_to_action"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -86,8 +91,8 @@
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/ad_app_icon"
+            app:layout_constraintStart_toEndOf="@+id/ad_icon"
             app:layout_constraintTop_toBottomOf="@+id/ad_body"
-            tools:text="Install" />
+            tools:text="Call to Action" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.gms.ads.nativead.NativeAdView>

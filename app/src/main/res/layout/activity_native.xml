@@ -52,4 +52,13 @@
         android:layout_marginTop="30dp"
         android:text="@string/txt_native_inline"
         tools:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/btnNativeLoadMultipleAds"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/txt_native_load_multiple_ads"
+        tools:textColor="@color/white" />
 </LinearLayout>

@@ -72,12 +72,10 @@
             android:hardwareAccelerated="true" />
         <activity
             android:name=".view.activity.NativeActivity"
-            android:exported="true"
-            android:hardwareAccelerated="true" />
+            android:exported="true" />
         <activity
             android:name=".view.activity.NativeBannerActivity"
-            android:exported="true"
-            android:hardwareAccelerated="true" />
+            android:exported="true" />
         <activity
             android:name=".view.activity.NativeBannerAdsActivity"
             android:exported="true"
@@ -88,6 +86,10 @@
             android:hardwareAccelerated="true" />
         <activity
             android:name=".view.activity.NativeBannerSmartActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeLoadMultipleAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
 

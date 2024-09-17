@@ -18,8 +18,6 @@ class BannerAdsActivity : BaseActivity<ActivityBannerAdsBinding>() {
         super.loadAds()
 
         CoroutineScope(Dispatchers.IO).launch {
-            // Initialize the Google Mobile Ads SDK on a background thread.
-            MobileAds.initialize(this@BannerAdsActivity) {}
             runOnUiThread {
                 // Load an ad on the main thread.
                 bannerManager = BannerManager.newInstance(

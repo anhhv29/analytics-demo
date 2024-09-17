@@ -29,6 +29,10 @@ class NativeActivity : BaseActivity<ActivityNativeBinding>() {
             btnNativeInline.setOnClickListener {
                 openActivity(CollapsibleBannerActivity::class.java)
             }
+
+            btnNativeLoadMultipleAds.setOnClickListener {
+                openActivity(NativeLoadMultipleAdsActivity::class.java)
+            }
         }
     }
 }

@@ -93,7 +93,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
                                         startMainActivity()
                                     }
                                 }
-                            },
+                            }
                         )
                     } else {
                         startMainActivity()

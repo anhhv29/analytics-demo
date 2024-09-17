@@ -1,4 +1,6 @@
 <com.google.android.gms.ads.nativead.NativeAdView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nativeAdView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -25,32 +27,38 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ad_app_icon"
+                <!-- Icon -->
+                <ImageView
+                    android:id="@+id/ad_icon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:adjustViewBounds="true"
+                    android:importantForAccessibility="no"
                     android:paddingStart="5dp"
                     android:paddingEnd="5dp"
-                    android:paddingBottom="5dp" />
+                    android:paddingBottom="5dp"
+                    tools:src="@tools:sample/avatars" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
+                    <!-- Headline (required) -->
                     <TextView
                         android:id="@+id/ad_headline"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textColor="#0000FF"
                         android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:text="Test Ad: Google Ads" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
+                        <!-- Advertiser View -->
                         <TextView
                             android:id="@+id/ad_advertiser"
                             android:layout_width="wrap_content"
@@ -59,6 +67,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold" />
 
+                        <!-- Star Rating View -->
                         <RatingBar
                             android:id="@+id/ad_stars"
                             style="?android:attr/ratingBarStyleSmall"
@@ -76,13 +85,17 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <!-- Body -->
                 <TextView
                     android:id="@+id/ad_body"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
-                    android:textSize="12sp" />
+                    android:maxLines="1"
+                    android:textSize="12sp"
+                    tools:text="TextView90TextVw90TextView90TextView90TextView90TextView90TextView90TextView90TextView90TextView90TextView90" />
 
+                <!-- Media View for Video or Image -->
                 <com.google.android.gms.ads.nativead.MediaView
                     android:id="@+id/ad_media"
                     android:layout_width="250dp"
@@ -98,6 +111,7 @@
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp">
 
+                    <!-- Price View -->
                     <TextView
                         android:id="@+id/ad_price"
                         android:layout_width="wrap_content"
@@ -106,6 +120,7 @@
                         android:paddingEnd="5dp"
                         android:textSize="12sp" />
 
+                    <!-- Store View -->
                     <TextView
                         android:id="@+id/ad_store"
                         android:layout_width="wrap_content"
@@ -114,12 +129,15 @@
                         android:paddingEnd="5dp"
                         android:textSize="12sp" />
 
-                    <androidx.appcompat.widget.AppCompatButton
+                    <!-- Call to Action (required) -->
+                    <Button
                         android:id="@+id/ad_call_to_action"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:text="Call to Action"
+                        tools:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
