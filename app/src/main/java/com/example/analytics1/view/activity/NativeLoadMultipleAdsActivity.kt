@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import com.example.analytics1.R
 import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
-import com.example.analytics1.databinding.ActivityNativeBannerAdsBinding
 import com.example.analytics1.databinding.ActivityNativeLoadMutipleAdsBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 

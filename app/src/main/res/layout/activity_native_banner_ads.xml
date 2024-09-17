@@ -39,13 +39,14 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/native_ad_template_banner">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <include
-            layout="@layout/native_ad_template_banner"
-            android:visibility="gone"
+        <ViewStub
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout="@layout/native_ad_template_banner"
             tools:visibility="visible" />
+
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
