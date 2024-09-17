@@ -1,6 +1,6 @@
 [versions]
 agp = "8.3.2"
-firebase-bom = "33.2.0"
+firebase-bom = "33.3.0"
 kotlin = "1.9.23"
 core-ktx = "1.13.1"
 junit = "4.13.2"
@@ -14,8 +14,7 @@ constraintlayout = "2.1.4"
 google-services = "4.4.2"
 firebase-analytics = "22.1.0"
 preference-ktx = "1.2.1"
-firebase-crashlytics = "19.0.3"
-gradle = "8.1.4"
+firebase-crashlytics = "19.1.0"
 firebase-crashlytics-gradle = "3.0.2"
 firebase-config = "22.0.0"
 firebase-database = "21.0.0"
@@ -42,11 +41,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
-google-services = { group = "com.google.gms", name = "google-services", version.ref = "google-services" }
 firebase-analytics = { group = "com.google.firebase", name = "firebase-analytics", version.ref = "firebase-analytics" }
 firebase-crashlytics = { group = "com.google.firebase", name = "firebase-crashlytics", version.ref = "firebase-crashlytics" }
-gradle = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle" }
-firebase-crashlytics-gradle = { group = "com.google.firebase", name = "firebase-crashlytics-gradle", version.ref = "firebase-crashlytics-gradle" }
 firebase-config = { group = "com.google.firebase", name = "firebase-config", version.ref = "firebase-config" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebase-database" }
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging", version.ref = "firebase-messaging" }
@@ -63,3 +59,5 @@ glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "gl
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
 jetbrainsKotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "google-services" }
+firebaseCrashlyticsGradle = { id = "com.google.firebase.crashlytics", version.ref = "firebase-crashlytics-gradle" }

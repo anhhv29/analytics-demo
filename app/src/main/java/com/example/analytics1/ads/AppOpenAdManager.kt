@@ -42,7 +42,7 @@ class AppOpenAdManager private constructor(
                 /**
                  * Called when an app open ad has loaded.
                  *
-                 * @param ad the loaded app open ad.
+                 * param ad the loaded app open ad.
                  */
                 override fun onAdLoaded(ad: AppOpenAd) {
                     appOpenAd = ad
@@ -54,7 +54,7 @@ class AppOpenAdManager private constructor(
                 /**
                  * Called when an app open ad has failed to load.
                  *
-                 * @param loadAdError the error.
+                 * param loadAdError the error.
                  */
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
                     isLoadingAd = false

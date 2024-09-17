@@ -30,7 +30,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     private var secondsRemaining: Long = 0L
 
     companion object {
-        private const val COUNTER_TIME_MILLISECONDS = 5000L
+        private const val COUNTER_TIME_MILLISECONDS = 12345L
     }
 
     override fun initView() {
@@ -70,7 +70,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
     /**
      * Create the countdown timer, which counts down to zero and show the app open ad.
      *
-     * @param time the number of milliseconds that the timer counts down from
+     * param time the number of milliseconds that the timer counts down from
      */
     private fun createTimer() {
         val countDownTimer: CountDownTimer =
