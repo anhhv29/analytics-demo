@@ -1,6 +1,5 @@
 package com.example.analytics1.view.activity
 
-import android.annotation.SuppressLint
 import com.example.analytics1.R
 import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
@@ -11,7 +10,6 @@ class NativeBannerAdsActivity : BaseActivity<ActivityNativeBannerAdsBinding>() {
     override fun getActivityBinding() = ActivityNativeBannerAdsBinding.inflate(layoutInflater)
     private var nativeManager: NativeManager? = null
 
-    @SuppressLint("InflateParams")
     override fun loadAds() {
         super.loadAds()
         nativeManager = NativeManager.newInstance(this, getString(R.string.native_ad_unit_id))
