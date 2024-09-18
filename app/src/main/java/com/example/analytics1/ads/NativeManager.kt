@@ -76,7 +76,8 @@ class NativeManager private constructor(
             })
             .withNativeAdOptions(
                 NativeAdOptions.Builder()
-                    .setRequestMultipleImages(false)
+                    .setAdChoicesPlacement(NativeAdOptions.ADCHOICES_TOP_RIGHT)
+                    .setMediaAspectRatio(NativeAdOptions.NATIVE_MEDIA_ASPECT_RATIO_LANDSCAPE)
                     .build()
             )
             .build()
