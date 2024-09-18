@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.interstitial_ad
 
 import android.util.Log
 import com.example.analytics1.R
@@ -8,6 +8,7 @@ import com.example.analytics1.databinding.ActivityInterstitialBinding
 import com.example.analytics1.util.Constants
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.util.SharedPreferences
+import com.example.analytics1.view.activity.NothingActivity
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.remoteConfig
 

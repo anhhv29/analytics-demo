@@ -44,63 +44,90 @@
             android:name=".view.activity.FirebaseActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.BannerActivity"
+            android:name=".view.activity.banner_ad.BannerActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.BannerAdsActivity"
+            android:name=".view.activity.banner_ad.BannerAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.CollapsibleBannerActivity"
+            android:name=".view.activity.banner_ad.CollapsibleBannerActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.InterstitialActivity"
+            android:name=".view.activity.interstitial_ad.InterstitialActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.InterstitialAdsActivity"
+            android:name=".view.activity.interstitial_ad.InterstitialAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.RewardedActivity"
+            android:name=".view.activity.rewarded_ad.RewardedActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.RewardedAdsActivity"
+            android:name=".view.activity.rewarded_ad.RewardedAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeActivity"
+            android:name=".view.activity.native_ad.NativeActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.NativeBannerActivity"
+            android:name=".view.activity.native_ad.native_banner.NativeBannerActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.NativeBannerAdsActivity"
+            android:name=".view.activity.native_ad.native_banner.NativeBannerAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeBannerOldActivity"
+            android:name=".view.activity.native_ad.native_banner.NativeBannerOldActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeBannerSmartActivity"
+            android:name=".view.activity.native_ad.native_banner.NativeBannerSmartActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeSmallActivity"
+            android:name=".view.activity.native_ad.native_small.NativeSmallActivity"
             android:exported="true" />
         <activity
-            android:name=".view.activity.NativeSmallOldActivity"
+            android:name=".view.activity.native_ad.native_small.NativeSmallOldActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeSmallGntActivity"
+            android:name=".view.activity.native_ad.native_small.NativeSmallGntActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
-            android:name=".view.activity.NativeLoadMultipleAdsActivity"
+            android:name=".view.activity.native_ad.NativeLoadMultipleAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumUnifiedActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumOldActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumSmartActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumOldSmartActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_medium.NativeMediumGntActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
 

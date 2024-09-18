@@ -4,6 +4,10 @@ import androidx.activity.OnBackPressedCallback
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityAdmobBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.view.activity.banner_ad.BannerActivity
+import com.example.analytics1.view.activity.interstitial_ad.InterstitialActivity
+import com.example.analytics1.view.activity.native_ad.NativeActivity
+import com.example.analytics1.view.activity.rewarded_ad.RewardedActivity
 
 class AdmobActivity : BaseActivity<ActivityAdmobBinding>() {
     override fun getActivityBinding() = ActivityAdmobBinding.inflate(layoutInflater)

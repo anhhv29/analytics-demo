@@ -42,7 +42,14 @@
     <string name="txt_native_banner_old">Native Banner Old</string>
     <string name="txt_native_banner_smart">Native Banner Smart</string>
     <string name="txt_native_small_old">Native Small Old</string>
-    <string name="txt_native_small_gtn">Native Small Google Template</string>
+    <string name="txt_native_small_gnt">Native Small Google Template</string>
+    <string name="txt_native_medium_unified">Native Medium Unified</string>
+    <string name="txt_native_medium_ads">Native Medium Ads</string>
+    <string name="txt_native_medium_old">Native Medium Old</string>
+    <string name="txt_native_medium_smart">Native Medium Smart</string>
+    <string name="txt_native_medium_old_smart">Native Medium Old Smart</string>
+    <string name="txt_native_medium_gnt">Native Medium Google Template</string>
+
     <string name="txt_native_load_multiple_ads">Native Load Multiple Ads</string>
     <string name="rewarded_ads">Rewarded Ads</string>
     <string name="txt_layout_show_rewarded">Layout Show Rewarded</string>
@@ -58,6 +65,7 @@
     <string name="interstitial_video_ad_unit_id">ca-app-pub-3940256099942544/8691691433</string>
     <string name="native_ad_unit_id">ca-app-pub-3940256099942544/2247696110</string>
     <string name="native_video_ad_unit_id">ca-app-pub-3940256099942544/1044960115</string>
+    <string name="native_video_old_ad_unit_id">ca-app-pub-3940256099942544/2521693316</string>
     <string name="rewarded_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
     <string name="rewarded_interstitial_ad_unit_id">ca-app-pub-3940256099942544/5354046379</string>
     <string name="ad">Ad</string>

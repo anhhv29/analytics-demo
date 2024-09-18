@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.rewarded_ad
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.analytics1.R
@@ -11,6 +11,7 @@ import com.example.analytics1.model.ItemDemoModel
 import com.example.analytics1.model.data.ItemDemoProvider
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.util.SharedPreferences
+import com.example.analytics1.view.activity.ResultActivity
 import com.example.analytics1.view.adapter.RewardedDemoAdapter
 
 class RewardedAdsActivity : BaseActivity<ActivityRewardedAdsBinding>() {

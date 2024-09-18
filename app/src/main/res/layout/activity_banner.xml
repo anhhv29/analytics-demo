@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.activity.BannerActivity">
+    tools:context=".view.activity.banner_ad.BannerActivity">
 
     <Button
         android:id="@+id/btnBannerAds"

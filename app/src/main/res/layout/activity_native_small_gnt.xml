@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.NativeSmallGntActivity">
+    tools:context=".view.activity.native_ad.native_small.NativeSmallGntActivity">
 
     <LinearLayout
         android:id="@+id/layoutView"
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="45dp"
             android:gravity="center"
-            android:text="@string/txt_native_small_gtn"
+            android:text="@string/txt_native_small_gnt"
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -37,6 +37,7 @@
         android:id="@+id/layoutAds"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">

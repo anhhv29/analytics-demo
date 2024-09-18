@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".view.activity.NativeSmallActivity">
+    tools:context=".view.activity.native_ad.native_small.NativeSmallActivity">
 
     <Button
         android:id="@+id/btnNativeSmallOld"
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="30dp"
-        android:text="@string/txt_native_small_gtn"
+        android:text="@string/txt_native_small_gnt"
         tools:textColor="@color/white" />
 
 </LinearLayout>

@@ -1,13 +1,15 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.native_ad.native_medium
 
 import com.example.analytics1.R
 import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
-import com.example.analytics1.databinding.ActivityNativeBannerOldBinding
+import com.example.analytics1.databinding.ActivityNativeBannerAdsBinding
+import com.example.analytics1.databinding.ActivityNativeMediumOldBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.view.activity.NothingActivity
 
-class NativeBannerOldActivity : BaseActivity<ActivityNativeBannerOldBinding>() {
-    override fun getActivityBinding() = ActivityNativeBannerOldBinding.inflate(layoutInflater)
+class NativeMediumOldActivity : BaseActivity<ActivityNativeMediumOldBinding>() {
+    override fun getActivityBinding() = ActivityNativeMediumOldBinding.inflate(layoutInflater)
     private var nativeManager: NativeManager? = null
 
     override fun loadAds() {
@@ -18,7 +20,7 @@ class NativeBannerOldActivity : BaseActivity<ActivityNativeBannerOldBinding>() {
             if (nativeAd != null) {
                 nativeManager?.loadAdTemplate(
                     nativeAd,
-                    R.layout.native_ad_template_banner_old,
+                    R.layout.native_ad_template_medium_old,
                     binding.layoutAds
                 )
             }
@@ -34,7 +36,7 @@ class NativeBannerOldActivity : BaseActivity<ActivityNativeBannerOldBinding>() {
 
     /** Called before the activity is destroyed. */
     public override fun onDestroy() {
-        //
+        nativeManager?.destroyNative()
         super.onDestroy()
     }
 }

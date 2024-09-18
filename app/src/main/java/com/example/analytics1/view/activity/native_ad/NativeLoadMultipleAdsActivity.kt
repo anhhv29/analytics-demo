@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.native_ad
 
 import android.annotation.SuppressLint
 import android.util.Log
@@ -7,6 +7,7 @@ import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityNativeLoadMutipleAdsBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.view.activity.NothingActivity
 import kotlin.random.Random
 
 class NativeLoadMultipleAdsActivity : BaseActivity<ActivityNativeLoadMutipleAdsBinding>() {
@@ -29,7 +30,7 @@ class NativeLoadMultipleAdsActivity : BaseActivity<ActivityNativeLoadMutipleAdsB
         }
         Log.d("scp", "Selected Ad Unit ID: $randomAdUnitId")
 
-        nativeManager = NativeManager.newInstance(this, randomAdUnitId)
+        nativeManager = NativeManager.newInstance(this, defaultAdUnitId)
 
         // Load multiple native ads (e.g., 3 ads)
         nativeManager?.loadMultipleAds(3) { nativeAds ->

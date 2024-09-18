@@ -1,11 +1,11 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.banner_ad
 
 import com.example.analytics1.R
 import com.example.analytics1.ads.BannerManager
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityBannerAdsBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
-import com.google.android.gms.ads.MobileAds
+import com.example.analytics1.view.activity.NothingActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

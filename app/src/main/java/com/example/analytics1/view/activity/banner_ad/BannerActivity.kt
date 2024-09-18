@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.banner_ad
 
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityBannerBinding

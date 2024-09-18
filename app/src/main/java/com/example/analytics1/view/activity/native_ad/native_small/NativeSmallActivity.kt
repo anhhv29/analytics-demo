@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.native_ad.native_small
 
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityNativeSmallBinding

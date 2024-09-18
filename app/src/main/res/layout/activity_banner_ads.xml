@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.activity.BannerAdsActivity">
+    tools:context=".view.activity.banner_ad.BannerAdsActivity">
 
     <LinearLayout
         android:id="@+id/layoutView"

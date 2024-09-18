@@ -1,24 +1,26 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.native_ad.native_medium
 
 import com.example.analytics1.R
 import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
-import com.example.analytics1.databinding.ActivityNativeBannerAdsBinding
+import com.example.analytics1.databinding.ActivityNativeMediumGntBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.view.activity.NothingActivity
 
-class NativeBannerSmartActivity : BaseActivity<ActivityNativeBannerAdsBinding>() {
-    override fun getActivityBinding() = ActivityNativeBannerAdsBinding.inflate(layoutInflater)
+class NativeMediumGntActivity : BaseActivity<ActivityNativeMediumGntBinding>() {
+    override fun getActivityBinding() = ActivityNativeMediumGntBinding.inflate(layoutInflater)
     private var nativeManager: NativeManager? = null
 
     override fun loadAds() {
         super.loadAds()
-        nativeManager = NativeManager.newInstance(this, getString(R.string.native_ad_unit_id))
+        nativeManager =
+            NativeManager.newInstance(this, getString(R.string.native_video_old_ad_unit_id))
         // Load a native ad and bind it to the NativeAdView
         nativeManager?.loadNativeAd { nativeAd ->
             if (nativeAd != null) {
                 nativeManager?.loadAdTemplate(
                     nativeAd,
-                    R.layout.native_ad_template_banner_smart,
+                    R.layout.gnt_medium_template_view,
                     binding.layoutAds
                 )
             }

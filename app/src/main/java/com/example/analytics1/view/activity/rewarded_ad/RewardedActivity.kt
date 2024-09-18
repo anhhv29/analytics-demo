@@ -1,4 +1,4 @@
-package com.example.analytics1.view.activity
+package com.example.analytics1.view.activity.rewarded_ad
 
 import com.example.analytics1.R
 import com.example.analytics1.ads.RewardedManager
@@ -6,6 +6,7 @@ import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityRewardedBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.util.SharedPreferences
+import com.example.analytics1.view.activity.NothingActivity
 
 class RewardedActivity : BaseActivity<ActivityRewardedBinding>() {
     override fun getActivityBinding() = ActivityRewardedBinding.inflate(layoutInflater)
