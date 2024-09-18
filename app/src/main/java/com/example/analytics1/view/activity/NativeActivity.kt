@@ -15,7 +15,7 @@ class NativeActivity : BaseActivity<ActivityNativeBinding>() {
             }
 
             btnNativeSmall.setOnClickListener {
-                openActivity(CollapsibleBannerActivity::class.java)
+                openActivity(NativeSmallActivity::class.java)
             }
 
             btnNativeMedium.setOnClickListener {

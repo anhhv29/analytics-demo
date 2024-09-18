@@ -41,6 +41,8 @@
     <string name="txt_native_banner_ads">Native Banner Ads</string>
     <string name="txt_native_banner_old">Native Banner Old</string>
     <string name="txt_native_banner_smart">Native Banner Smart</string>
+    <string name="txt_native_small_old">Native Small Old</string>
+    <string name="txt_native_small_gtn">Native Small Google Template</string>
     <string name="txt_native_load_multiple_ads">Native Load Multiple Ads</string>
     <string name="rewarded_ads">Rewarded Ads</string>
     <string name="txt_layout_show_rewarded">Layout Show Rewarded</string>

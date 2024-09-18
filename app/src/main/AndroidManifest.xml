@@ -89,6 +89,17 @@
             android:exported="true"
             android:hardwareAccelerated="true" />
         <activity
+            android:name=".view.activity.NativeSmallActivity"
+            android:exported="true" />
+        <activity
+            android:name=".view.activity.NativeSmallOldActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.NativeSmallGntActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
+        <activity
             android:name=".view.activity.NativeLoadMultipleAdsActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
