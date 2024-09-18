@@ -22,7 +22,7 @@ class BannerAdsActivity : BaseActivity<ActivityBannerAdsBinding>() {
                 // Load an ad on the main thread.
                 bannerManager = BannerManager.newInstance(
                     this@BannerAdsActivity,
-                    getString(R.string.banner_ad_unit_id)
+                    getString(R.string.banner_adaptive_ad_unit_id)
                 )
                 bannerManager?.loadBanner(binding.layoutAds)
             }

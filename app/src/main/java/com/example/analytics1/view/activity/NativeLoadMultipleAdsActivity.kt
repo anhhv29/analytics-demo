@@ -1,11 +1,13 @@
 package com.example.analytics1.view.activity
 
 import android.annotation.SuppressLint
+import android.util.Log
 import com.example.analytics1.R
 import com.example.analytics1.ads.NativeManager
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityNativeLoadMutipleAdsBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import kotlin.random.Random
 
 class NativeLoadMultipleAdsActivity : BaseActivity<ActivityNativeLoadMutipleAdsBinding>() {
     override fun getActivityBinding() = ActivityNativeLoadMutipleAdsBinding.inflate(layoutInflater)
@@ -14,7 +16,20 @@ class NativeLoadMultipleAdsActivity : BaseActivity<ActivityNativeLoadMutipleAdsB
     @SuppressLint("InflateParams")
     override fun loadAds() {
         super.loadAds()
-        nativeManager = NativeManager.newInstance(this, getString(R.string.native_ad_unit_id))
+
+        val defaultAdUnitId = getString(R.string.native_ad_unit_id)
+        // Get the array of ad unit IDs
+        val adUnitIds = resources.getStringArray(R.array.native_ad_unit_ids)
+        // Get a random ad unit ID
+        val randomAdUnitId = try {
+            adUnitIds[Random.nextInt(adUnitIds.size)]
+        } catch (e: Exception) {
+            // Fallback to a known valid ad unit ID
+            defaultAdUnitId
+        }
+        Log.d("scp", "Selected Ad Unit ID: $randomAdUnitId")
+
+        nativeManager = NativeManager.newInstance(this, randomAdUnitId)
 
         // Load multiple native ads (e.g., 3 ads)
         nativeManager?.loadMultipleAds(3) { nativeAds ->

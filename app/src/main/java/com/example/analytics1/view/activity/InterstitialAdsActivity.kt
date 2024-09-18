@@ -21,7 +21,7 @@ class InterstitialAdsActivity : BaseActivity<ActivityInterstitialAdsBinding>() {
         if (!SharedPreferences.isProApp(this)) {
             showLoading()
             interstitialManager =
-                InterstitialManager.newInstance(this, getString(R.string.interstitial_ad_unit_id))
+                InterstitialManager.newInstance(this, getString(R.string.interstitial_video_ad_unit_id))
             interstitialManager?.loadAd(afterLoadAd = {
                 hideLoading()
             })
