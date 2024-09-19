@@ -7,9 +7,11 @@ import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
+import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDexApplication
 import com.example.analytics1.R
 import com.example.analytics1.ads.AppOpenAdManager
+import com.example.analytics1.util.SharedPreferences
 import com.google.android.gms.tasks.Task
 import com.google.firebase.Firebase
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
@@ -102,6 +104,9 @@ class MyApplication :
         activity: Activity,
         onShowAdCompleteListener: AppOpenAdManager.OnShowOpenAdCompleteListener
     ) {
+        if (SharedPreferences.isProApp(applicationContext)) {
+            return
+        }
         // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
         // class.
         appOpenAdManager.showAdIfAvailable(activity, onShowAdCompleteListener)

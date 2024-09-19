@@ -1,3 +1,6 @@
+import java.text.SimpleDateFormat
+import java.util.Date
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -14,21 +17,51 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "0.0.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        val formattedDate = SimpleDateFormat("MM.dd.yyyy").format(Date())
+        val archivesBaseName =
+            "${rootProject.name}_v${versionName}_c${versionCode}_${formattedDate}"
+        setProperty("archivesBaseName", archivesBaseName)
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = "cscmobiapps"
+            keyPassword = "cscmobi"
+            storeFile = file("keystore/cscmobiapps.jks")
+            storePassword = "cscmobi"
+        }
     }
 
     buildTypes {
-        release {
+        debug {
+            isDebuggable = true
             isMinifyEnabled = false
+            multiDexEnabled = true
+            isShrinkResources = false
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+        }
+
+        release {
+            //debug for build release
+            isDebuggable = true
+
+//            isDebuggable = false
+            isMinifyEnabled = true
+            multiDexEnabled = true
+            isShrinkResources = true
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("release")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8

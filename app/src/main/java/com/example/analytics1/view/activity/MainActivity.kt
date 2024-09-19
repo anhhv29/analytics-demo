@@ -3,13 +3,15 @@ package com.example.analytics1.view.activity
 import android.Manifest
 import android.content.pm.PackageManager
 import android.os.Build
-import android.widget.Toast
+import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
+import com.example.analytics1.R
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityMainBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.util.MyUtils.Companion.showToast
 
 /**
  * @Author: anhhv
@@ -20,6 +22,11 @@ import com.example.analytics1.util.MyUtils.Companion.openActivity
 
 class MainActivity : BaseActivity<ActivityMainBinding>() {
     override fun getActivityBinding() = ActivityMainBinding.inflate(layoutInflater)
+
+    override fun initView() {
+        super.initView()
+        askNotificationPermission()
+    }
 
     override fun clickView() {
         super.clickView()
@@ -32,8 +39,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 }
             }
         onBackPressedDispatcher.addCallback(this, onBackPressedCallback)
-
-        askNotificationPermission()
 
         binding.btnFirebase.setOnClickListener {
             openActivity(FirebaseActivity::class.java)
@@ -48,14 +53,9 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
         ActivityResultContracts.RequestPermission(),
     ) { isGranted: Boolean ->
         if (isGranted) {
-            Toast.makeText(this, "Notifications permission granted", Toast.LENGTH_SHORT)
-                .show()
+            showToast(getString(R.string.notification_access_granted))
         } else {
-            Toast.makeText(
-                this,
-                "FCM can't post notifications without POST_NOTIFICATIONS permission",
-                Toast.LENGTH_LONG,
-            ).show()
+            showToast(getString(R.string.notification_access_denied))
         }
     }
 
@@ -66,6 +66,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
                 PackageManager.PERMISSION_GRANTED
             ) {
                 // FCM SDK (and your app) can post notifications.
+                Log.d("scp", "Notification Access Granted")
             } else {
                 // Directly ask for the permission
                 requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)

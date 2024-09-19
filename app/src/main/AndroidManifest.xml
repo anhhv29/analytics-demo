@@ -157,6 +157,12 @@
             android:value="false" />
         <!--  -->
 
+        <!--Disabling Crashlytics-->
+        <meta-data
+            android:name="firebase_crashlytics_collection_enabled"
+            android:value="${crashlyticsCollectionEnabled}" />
+        <!---->
+
         <!-- FirebaseMessagingService -->
         <property
             android:name="android.adservices.AD_SERVICES_CONFIG"

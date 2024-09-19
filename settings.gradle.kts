@@ -21,6 +21,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "analytics1"
+rootProject.name = "my_app"
 include(":app")
  

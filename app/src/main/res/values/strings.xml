@@ -18,6 +18,8 @@
     <string name="msg_token_fmt">FCM registration Token: %s</string>
     <string name="preparing_data">Preparing Data</string>
     <string name="this_action_can_contain_ads">This action can contain ads</string>
+    <string name="notification_access_granted">Notification Access Granted</string>
+    <string name="notification_access_denied">Notification Access Denied</string>
     <string name="nothing">Nothing</string>
     <string name="splash">Splash</string>
     <string name="firebase">Firebase</string>
