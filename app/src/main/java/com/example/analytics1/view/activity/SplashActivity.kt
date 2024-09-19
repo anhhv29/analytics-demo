@@ -1,18 +1,18 @@
 package com.example.analytics1.view.activity
 
 import android.annotation.SuppressLint
-import android.content.Intent
 import android.os.CountDownTimer
 import android.util.Log
+import com.example.analytics1.R
 import com.example.analytics1.ads.AppOpenAdManager
 import com.example.analytics1.ads.GoogleMobileAdsConsentManager
-import com.example.analytics1.application.MyApplication
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivitySplashBinding
 import com.example.analytics1.util.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
+import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.util.SharedPreferences
 import com.google.android.gms.ads.MobileAds
-import com.google.firebase.Firebase
-import com.google.firebase.remoteconfig.remoteConfig
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -26,12 +26,10 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private lateinit var googleMobileAdsConsentManager: GoogleMobileAdsConsentManager
     private val isMobileAdsInitializeCalled = AtomicBoolean(false)
-    private val gatherConsentFinished = AtomicBoolean(false)
+    private var appOpenAdManager: AppOpenAdManager? = null
+    private var countDownTimer: CountDownTimer? = null
     private var secondsRemaining: Long = 0L
-
-    companion object {
-        private const val COUNTER_TIME_MILLISECONDS = 12345L
-    }
+    private var finishedTimer = false
 
     override fun initView() {
         super.initView()
@@ -39,88 +37,82 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
         // Log the Mobile Ads SDK version.
         Log.d("scp", "Google Mobile Ads SDK Version: " + MobileAds.getVersion())
 
-        // Create a timer so the SplashActivity will be displayed for a fixed amount of time.
-        createTimer()
+        if (!SharedPreferences.isProApp(this)) {
+            googleMobileAdsConsentManager =
+                GoogleMobileAdsConsentManager.getInstance(applicationContext)
+            googleMobileAdsConsentManager.gatherConsent(this) { consentError ->
+                consentError?.let {
+                    Log.w("scp", "${it.errorCode}: ${it.message}")
+                    continueApp()
+                    return@gatherConsent
+                }
 
-        googleMobileAdsConsentManager =
-            GoogleMobileAdsConsentManager.getInstance(applicationContext)
-        googleMobileAdsConsentManager.gatherConsent(this) { consentError ->
-            if (consentError != null) {
-                // Consent not obtained in current session.
-                Log.w("scp", String.format("%s: %s", consentError.errorCode, consentError.message))
+                if (googleMobileAdsConsentManager.canRequestAds) {
+                    initializeMobileAdsSdk()
+                } else {
+                    continueApp()
+                }
             }
-
-            gatherConsentFinished.set(true)
-
-            if (googleMobileAdsConsentManager.canRequestAds) {
-                initializeMobileAdsSdk()
-            }
-
-            if (secondsRemaining <= 0) {
-                startMainActivity()
-            }
-        }
-
-        // This sample attempts to load ads using consent obtained in the previous session.
-        if (googleMobileAdsConsentManager.canRequestAds) {
-            initializeMobileAdsSdk()
+        } else {
+            continueApp()
         }
     }
 
-    /**
-     * Create the countdown timer, which counts down to zero and show the app open ad.
-     *
-     * param time the number of milliseconds that the timer counts down from
-     */
     private fun createTimer() {
-        val countDownTimer: CountDownTimer =
-            object : CountDownTimer(COUNTER_TIME_MILLISECONDS, 1000) {
-                override fun onTick(millisUntilFinished: Long) {
-                    secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) + 1
-                }
-
-                val showOpenAd = Firebase.remoteConfig.getBoolean(KEY_AD_OPEN_APP)
-                override fun onFinish() {
-                    secondsRemaining = 0
-                    if (showOpenAd) {
-                        (application as MyApplication).showAdIfAvailable(
-                            this@SplashActivity,
-                            object : AppOpenAdManager.OnShowOpenAdCompleteListener {
-                                override fun onShowAdComplete() {
-                                    // Check if the consent form is currently on screen before moving to the main
-                                    // activity.
-                                    if (gatherConsentFinished.get()) {
-                                        startMainActivity()
-                                    }
-                                }
-                            }
-                        )
-                    } else {
-                        startMainActivity()
-                    }
-                }
+        countDownTimer = object : CountDownTimer(12345, 1000) {
+            override fun onTick(millisUntilFinished: Long) {
+                secondsRemaining = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) + 1
             }
-        countDownTimer.start()
+
+            override fun onFinish() {
+                Log.d("scp", "createTimer: onFinish")
+                finishedTimer = true
+                secondsRemaining = 0
+                continueApp()
+            }
+        }
+        countDownTimer?.start()
     }
 
     private fun initializeMobileAdsSdk() {
-        if (isMobileAdsInitializeCalled.getAndSet(true)) {
-            return
-        }
+        if (isMobileAdsInitializeCalled.getAndSet(true)) return
 
-        CoroutineScope(Dispatchers.IO).launch {
-            // Initialize the Google Mobile Ads SDK on a background thread.
-            MobileAds.initialize(this@SplashActivity) {}
-            runOnUiThread {
-                // Load an ad on the main thread.
-                (application as MyApplication).loadAd(this@SplashActivity)
+        createTimer()
+
+        val showOpenAd = FirebaseRemoteConfig.getInstance().getBoolean(KEY_AD_OPEN_APP)
+        if (showOpenAd) {
+            CoroutineScope(Dispatchers.IO).launch {
+                // Initialize the Google Mobile Ads SDK on a background thread.
+                MobileAds.initialize(this@SplashActivity) {}
+                runOnUiThread {
+                    // Load an ad on the main thread.
+                    appOpenAdManager =
+                        AppOpenAdManager.newInstance(getString(R.string.open_ad_unit_id))
+                    appOpenAdManager?.loadAd(this@SplashActivity) {
+                        appOpenAdManager?.isLoadingAd = true
+                        if (!finishedTimer) {
+                            appOpenAdManager?.showAdIfAvailable(
+                                this@SplashActivity,
+                                object : AppOpenAdManager.OnShowOpenAdCompleteListener {
+                                    override fun onShowAdComplete(done: Boolean) {
+                                        countDownTimer?.cancel()
+                                        if (done) {
+                                            continueApp()
+                                        }
+                                    }
+                                }
+                            )
+                        }
+                    }
+                }
             }
+        } else {
+            continueApp()
         }
     }
 
     /** Start the MainActivity. */
-    fun startMainActivity() {
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
+    fun continueApp() {
+        openActivity(MainActivity::class.java)
     }
 }

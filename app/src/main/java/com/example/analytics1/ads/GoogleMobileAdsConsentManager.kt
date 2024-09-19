@@ -63,7 +63,7 @@ class GoogleMobileAdsConsentManager private constructor(context: Context) {
             },
             { requestConsentError ->
                 onConsentGatheringCompleteListener.consentGatheringComplete(requestConsentError)
-            },
+            }
         )
     }
 

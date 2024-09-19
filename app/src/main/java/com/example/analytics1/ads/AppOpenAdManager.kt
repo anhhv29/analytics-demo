@@ -14,7 +14,7 @@ class AppOpenAdManager private constructor(
     private val adUnitId: String
 ) {
     private var appOpenAd: AppOpenAd? = null
-    private var isLoadingAd = false
+    var isLoadingAd = false
     var isShowingAd = false
     var isShowAppOpenAdComplete = false
 
@@ -26,13 +26,14 @@ class AppOpenAdManager private constructor(
      *
      * param context the context of the activity that loads the ad
      */
-    fun loadAd(context: Context) {
+    fun loadAd(context: Context, afterLoadAd: () -> Unit) {
         // Do not load ad if there is an unused ad or one is already loading.
         if (isLoadingAd || isAdAvailable()) {
             return
         }
 
         isLoadingAd = true
+
         val request = AdRequest.Builder().build()
         AppOpenAd.load(
             context,
@@ -48,6 +49,7 @@ class AppOpenAdManager private constructor(
                     appOpenAd = ad
                     isLoadingAd = false
                     loadTime = Date().time
+                    afterLoadAd.invoke()
                     Log.d("scp", "AppOpenAd onAdLoaded.")
                 }
 
@@ -57,10 +59,12 @@ class AppOpenAdManager private constructor(
                  * param loadAdError the error.
                  */
                 override fun onAdFailedToLoad(loadAdError: LoadAdError) {
+                    appOpenAd = null
                     isLoadingAd = false
+                    afterLoadAd.invoke()
                     Log.d("scp", "AppOpenAd onAdFailedToLoad: " + loadAdError.message)
                 }
-            },
+            }
         )
     }
 
@@ -88,11 +92,11 @@ class AppOpenAdManager private constructor(
         showAdIfAvailable(
             activity,
             object : OnShowOpenAdCompleteListener {
-                override fun onShowAdComplete() {
+                override fun onShowAdComplete(done: Boolean) {
                     // Empty because the user will go back to the activity that shows the ad.
                     isShowAppOpenAdComplete = true
                 }
-            },
+            }
         )
     }
 
@@ -115,8 +119,8 @@ class AppOpenAdManager private constructor(
         // If the app open ad is not available yet, invoke the callback.
         if (!isAdAvailable()) {
             Log.d("scp", "The app open ad is not ready yet.")
-            onShowAdCompleteListener.onShowAdComplete()
-            loadAd(activity)
+            onShowAdCompleteListener.onShowAdComplete(true)
+            loadAd(activity) {}
             return
         }
 
@@ -130,8 +134,8 @@ class AppOpenAdManager private constructor(
                     appOpenAd = null
                     isShowingAd = false
                     Log.d("scp", "onAdDismissedFullScreenContent.")
-                    onShowAdCompleteListener.onShowAdComplete()
-                    loadAd(activity)
+                    onShowAdCompleteListener.onShowAdComplete(true)
+                    loadAd(activity) {}
                 }
 
                 /** Called when fullscreen content failed to show. */
@@ -139,13 +143,14 @@ class AppOpenAdManager private constructor(
                     appOpenAd = null
                     isShowingAd = false
                     Log.d("scp", "onAdFailedToShowFullScreenContent: " + adError.message)
-                    onShowAdCompleteListener.onShowAdComplete()
-                    loadAd(activity)
+                    onShowAdCompleteListener.onShowAdComplete(true)
+                    loadAd(activity) {}
                 }
 
                 /** Called when fullscreen content is shown. */
                 override fun onAdShowedFullScreenContent() {
                     Log.d("scp", "onAdShowedFullScreenContent.")
+                    onShowAdCompleteListener.onShowAdComplete(false)
                 }
             }
         isShowingAd = true
@@ -157,7 +162,7 @@ class AppOpenAdManager private constructor(
      * dismissed or fails to show).
      */
     interface OnShowOpenAdCompleteListener {
-        fun onShowAdComplete()
+        fun onShowAdComplete(done: Boolean)
     }
 
     companion object {

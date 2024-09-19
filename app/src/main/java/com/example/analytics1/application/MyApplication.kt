@@ -7,7 +7,6 @@ import android.util.Log
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.ProcessLifecycleOwner
-import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDexApplication
 import com.example.analytics1.R
 import com.example.analytics1.ads.AppOpenAdManager
@@ -22,7 +21,7 @@ import com.google.firebase.remoteconfig.remoteConfigSettings
 class MyApplication :
     MultiDexApplication(), Application.ActivityLifecycleCallbacks, DefaultLifecycleObserver {
 
-    private lateinit var appOpenAdManager: AppOpenAdManager
+    private var appOpenAdManager: AppOpenAdManager? = null
     private var currentActivity: Activity? = null
 
     override fun onCreate() {
@@ -49,7 +48,9 @@ class MyApplication :
         currentActivity?.let {
             remoteConfigs()
             // Show the ad (if available) when the app moves to foreground.
-            appOpenAdManager.showAdIfAvailable(it)
+            if (!SharedPreferences.isProApp(it)) {
+                appOpenAdManager?.showAdIfAvailable(it)
+            }
         }
     }
 
@@ -79,7 +80,7 @@ class MyApplication :
         // SDK or another activity class implemented by a third party mediation partner. Updating the
         // currentActivity only when an ad is not showing will ensure it is not an ad activity, but the
         // one that shows the ad.
-        if (!appOpenAdManager.isShowingAd) {
+        if (appOpenAdManager?.isShowingAd == false) {
             currentActivity = activity
         }
     }
@@ -93,33 +94,4 @@ class MyApplication :
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
     override fun onActivityDestroyed(activity: Activity) {}
-
-    /**
-     * Shows an app open ad.
-     *
-     * param activity the activity that shows the app open ad
-     * param onShowAdCompleteListener the listener to be notified when an app open ad is complete
-     */
-    fun showAdIfAvailable(
-        activity: Activity,
-        onShowAdCompleteListener: AppOpenAdManager.OnShowOpenAdCompleteListener
-    ) {
-        if (SharedPreferences.isProApp(applicationContext)) {
-            return
-        }
-        // We wrap the showAdIfAvailable to enforce that other classes only interact with MyApplication
-        // class.
-        appOpenAdManager.showAdIfAvailable(activity, onShowAdCompleteListener)
-    }
-
-    /**
-     * Load an app open ad.
-     *
-     * param activity the activity that shows the app open ad
-     */
-    fun loadAd(activity: Activity) {
-        // We wrap the loadAd to enforce that other classes only interact with MyApplication
-        // class.
-        appOpenAdManager.loadAd(activity)
-    }
 }
