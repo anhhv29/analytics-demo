@@ -53,6 +53,8 @@
     <string name="txt_native_medium_gnt">Native Medium Google Template</string>
     <string name="txt_native_large_ads">Native Large Ads</string>
     <string name="txt_native_large_old">Native Large Old</string>
+    <string name="txt_native_inline_ads">Native Inline Ads</string>
+    <string name="txt_native_inline_span_count">Native Inline Span Count</string>
     <string name="txt_native_load_multiple_ads">Native Load Multiple Ads</string>
     <string name="rewarded_ads">Rewarded Ads</string>
     <string name="txt_layout_show_rewarded">Layout Show Rewarded</string>

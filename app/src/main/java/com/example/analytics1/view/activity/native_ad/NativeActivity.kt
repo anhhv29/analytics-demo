@@ -4,10 +4,10 @@ import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityNativeBinding
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.view.activity.native_ad.native_banner.NativeBannerActivity
-import com.example.analytics1.view.activity.native_ad.native_small.NativeSmallActivity
-import com.example.analytics1.view.activity.banner_ad.CollapsibleBannerActivity
+import com.example.analytics1.view.activity.native_ad.native_inline.NativeInlineActivity
 import com.example.analytics1.view.activity.native_ad.native_large.NativeLargeActivity
 import com.example.analytics1.view.activity.native_ad.native_medium.NativeMediumActivity
+import com.example.analytics1.view.activity.native_ad.native_small.NativeSmallActivity
 
 class NativeActivity : BaseActivity<ActivityNativeBinding>() {
     override fun getActivityBinding() = ActivityNativeBinding.inflate(layoutInflater)
@@ -32,7 +32,7 @@ class NativeActivity : BaseActivity<ActivityNativeBinding>() {
             }
 
             btnNativeInline.setOnClickListener {
-                openActivity(CollapsibleBannerActivity::class.java)
+                openActivity(NativeInlineActivity::class.java)
             }
 
             btnNativeLoadMultipleAds.setOnClickListener {
