@@ -6,6 +6,8 @@ import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityNativeInlineAdsBinding
 import com.example.analytics1.model.ItemDemoModel
 import com.example.analytics1.model.data.ItemDemoProvider
+import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.view.activity.ResultActivity
 import com.example.analytics1.view.adapter.NativeInlineAdsAdapter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -13,29 +15,49 @@ import kotlinx.coroutines.withContext
 
 class NativeInlineAdsActivity : BaseActivity<ActivityNativeInlineAdsBinding>() {
     override fun getActivityBinding() = ActivityNativeInlineAdsBinding.inflate(layoutInflater)
-    private var mAdapter: NativeInlineAdsAdapter? = null
+    private lateinit var mAdapter: NativeInlineAdsAdapter
+
     override fun initView() {
         super.initView()
 
+        setupRecyclerView()
+        loadData()
+
+        mAdapter.setClickListener(object : NativeInlineAdsAdapter.ItemClickListener {
+            override fun eventClick(itemDemoModel: ItemDemoModel) {
+                eventAfterClickItem(itemDemoModel)
+            }
+        })
+    }
+
+    private fun setupRecyclerView() {
         mAdapter = NativeInlineAdsAdapter(this, mutableListOf())
 
+        // Setting up LinearLayoutManager for vertical scrolling
         val mLayoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         binding.rcvNativeInlineDemo.apply {
             adapter = mAdapter
             layoutManager = mLayoutManager
         }
+    }
 
-        lifecycleScope.launch(Dispatchers.IO) {
-            val dataItemDemo = ItemDemoProvider().getListNativeInlineDemo()
-            withContext(Dispatchers.Main) {
-                mAdapter?.updateData(dataItemDemo)
+    private fun loadData() {
+        lifecycleScope.launch {
+            try {
+                val dataItemDemo = withContext(Dispatchers.IO) {
+                    ItemDemoProvider().getListNativeInlineDemo()
+                }
+                mAdapter.updateData(dataItemDemo)
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
+    }
 
-        mAdapter?.setClickListener(object : NativeInlineAdsAdapter.ItemClickListener {
-            override fun eventClick(itemDemoModel: ItemDemoModel) {
-
-            }
-        })
+    private fun eventAfterClickItem(itemDemoModel: ItemDemoModel) {
+        openActivity(ResultActivity::class.java) {
+            putString("DATA_TEXT", itemDemoModel.id.toString())
+            putInt("DATA_IMAGE", itemDemoModel.image)
+        }
     }
 }

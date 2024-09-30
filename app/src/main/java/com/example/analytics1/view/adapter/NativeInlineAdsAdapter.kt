@@ -28,6 +28,10 @@ class NativeInlineAdsAdapter(
     private val isPro: Boolean = SharedPreferences.isProApp(context)
     private var itemClickListener: ItemClickListener? = null
 
+    companion object {
+        private const val AD_TYPE = "ADS_INLINE"
+    }
+
     class ViewHolder(val binding: ItemDemoNativeInlineBinding) :
         RecyclerView.ViewHolder(binding.root)
 
@@ -42,7 +46,7 @@ class NativeInlineAdsAdapter(
 
         holder.binding.apply {
             if (shouldShowAd(itemDemoModel)) {
-                showAd(holder, itemDemoModel)
+                showAd(holder, itemPosition)
             } else {
                 showContent()
             }
@@ -55,10 +59,7 @@ class NativeInlineAdsAdapter(
         }
     }
 
-    private fun ItemDemoNativeInlineBinding.showAd(
-        holder: ViewHolder,
-        itemDemoModel: ItemDemoModel
-    ) {
+    private fun ItemDemoNativeInlineBinding.showAd(holder: ViewHolder, position: Int) {
         nativeManager =
             NativeInlineManager.newInstance(context, context.getString(R.string.native_ad_unit_id))
         layoutView.goneView()
@@ -72,14 +73,17 @@ class NativeInlineAdsAdapter(
                     holder.binding.layoutAds
                 )
             } else {
-                removeAd(holder, itemDemoModel)
+                removeAd(holder, position)
             }
         }
     }
 
-    private fun removeAd(holder: ViewHolder, itemDemoModel: ItemDemoModel) {
-        notifyItemRemoved(holder.adapterPosition)
-        mList.remove(itemDemoModel)
+    private fun removeAd(holder: ViewHolder, position: Int) {
+        if (position != RecyclerView.NO_POSITION && mList[position].type == AD_TYPE) {
+            mList.removeAt(position)
+            notifyItemRemoved(position)
+            notifyItemRangeChanged(position, mList.size)
+        }
         holder.binding.layoutAds.goneView()
     }
 
@@ -89,6 +93,7 @@ class NativeInlineAdsAdapter(
     }
 
     private fun ItemDemoNativeInlineBinding.loadImage(imageData: Int) {
+        vLoading.visibleView()
         Glide.with(context).load(imageData)
             .addListener(object : RequestListener<Drawable> {
                 override fun onLoadFailed(
@@ -138,7 +143,7 @@ class NativeInlineAdsAdapter(
         notifyDataSetChanged()
     }
 
-    private fun shouldShowAd(item: ItemDemoModel) = !isPro && item.type == "ADS_INLINE"
+    private fun shouldShowAd(item: ItemDemoModel) = !isPro && item.type == AD_TYPE
 
     interface ItemClickListener {
         fun eventClick(itemDemoModel: ItemDemoModel)
