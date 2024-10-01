@@ -94,4 +94,8 @@ class MyApplication :
     override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {}
 
     override fun onActivityDestroyed(activity: Activity) {}
+
+    companion object {
+        const val TEST_DEVICE_HASHED_ID = "ABCDEF012345"
+    }
 }

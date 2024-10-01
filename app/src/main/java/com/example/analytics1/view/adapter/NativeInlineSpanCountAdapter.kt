@@ -77,7 +77,7 @@ class NativeInlineSpanCountAdapter(
             if (nativeAd != null) {
                 nativeManager?.loadAdTemplate(
                     nativeAd,
-                    R.layout.native_ad_template_banner,
+                    R.layout.gnt_small_template_view,
                     holder.binding.layoutAds
                 )
             } else {

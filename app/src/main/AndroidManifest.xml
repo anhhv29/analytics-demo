@@ -152,6 +152,10 @@
             android:name=".view.activity.native_ad.native_inline.NativeInlineSpanCountActivity"
             android:exported="true"
             android:hardwareAccelerated="true" />
+        <activity
+            android:name=".view.activity.native_ad.native_full_screen.NativeFullScreenAdsActivity"
+            android:exported="true"
+            android:hardwareAccelerated="true" />
 
         <!-- AdMob -->
         <meta-data

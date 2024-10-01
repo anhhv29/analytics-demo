@@ -6,12 +6,14 @@ import android.util.Log
 import com.example.analytics1.R
 import com.example.analytics1.ads.AppOpenAdManager
 import com.example.analytics1.ads.GoogleMobileAdsConsentManager
+import com.example.analytics1.application.MyApplication.Companion.TEST_DEVICE_HASHED_ID
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivitySplashBinding
 import com.example.analytics1.util.Constants.RemoteConfig.Companion.KEY_AD_OPEN_APP
 import com.example.analytics1.util.MyUtils.Companion.openActivity
 import com.example.analytics1.util.SharedPreferences
 import com.google.android.gms.ads.MobileAds
+import com.google.android.gms.ads.RequestConfiguration
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -76,6 +78,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>() {
 
     private fun initializeMobileAdsSdk() {
         if (isMobileAdsInitializeCalled.getAndSet(true)) return
+
+        // Set your test devices.
+        MobileAds.setRequestConfiguration(
+            RequestConfiguration.Builder()
+                .setTestDeviceIds(listOf(TEST_DEVICE_HASHED_ID))
+                .build()
+        )
 
         createTimer()
 

@@ -54,6 +54,15 @@
         tools:textColor="@color/white" />
 
     <Button
+        android:id="@+id/btnNativeFullScreen"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:text="@string/txt_native_full_screen"
+        tools:textColor="@color/white" />
+
+    <Button
         android:id="@+id/btnNativeLoadMultipleAds"
         android:layout_width="200dp"
         android:layout_height="wrap_content"

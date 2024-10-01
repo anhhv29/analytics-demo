@@ -2,6 +2,7 @@ package com.example.analytics1.ads
 
 import android.app.Activity
 import android.content.Context
+import com.example.analytics1.application.MyApplication.Companion.TEST_DEVICE_HASHED_ID
 import com.google.android.ump.ConsentDebugSettings
 import com.google.android.ump.ConsentForm.OnConsentFormDismissedListener
 import com.google.android.ump.ConsentInformation
@@ -45,7 +46,7 @@ class GoogleMobileAdsConsentManager private constructor(context: Context) {
         val debugSettings =
             ConsentDebugSettings.Builder(activity)
                 // .setDebugGeography(ConsentDebugSettings.DebugGeography.DEBUG_GEOGRAPHY_EEA)
-                .addTestDeviceHashedId("ABCDEF012345")
+                .addTestDeviceHashedId(TEST_DEVICE_HASHED_ID)
                 .build()
 
         val params =
