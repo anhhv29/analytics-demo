@@ -34,7 +34,7 @@ class BannerManager private constructor(
         }
 
     // Initialize and load banner ad
-    fun loadBanner(adContainer: ViewGroup) {
+    fun loadBanner(adContainer: ViewGroup, afterLoadAd: () -> Unit) {
         adView = AdView(activity).apply {
             adUnitId = this@BannerManager.adUnitId
             setAdSize(mAdSize)
@@ -45,7 +45,7 @@ class BannerManager private constructor(
         adContainer.addView(adView)
 
         // Listen to ad events.
-        adListener()
+        adListener(afterLoadAd)
 
         // Load the ad.
         val adRequest = AdRequest.Builder().build()
@@ -68,7 +68,7 @@ class BannerManager private constructor(
         Log.d("scp", "Banner resumeBanner")
     }
 
-    private fun adListener() {
+    private fun adListener(afterLoadAd: () -> Unit) {
         adView?.adListener = object : AdListener() {
             override fun onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
@@ -84,6 +84,7 @@ class BannerManager private constructor(
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 // Code to be executed when an ad request fails.
                 Log.d("scp", "Banner onAdFailedToLoad")
+                afterLoadAd.invoke()
             }
 
             override fun onAdImpression() {
@@ -95,6 +96,7 @@ class BannerManager private constructor(
             override fun onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
                 Log.d("scp", "Banner onAdLoaded")
+                afterLoadAd.invoke()
             }
 
             override fun onAdOpened() {

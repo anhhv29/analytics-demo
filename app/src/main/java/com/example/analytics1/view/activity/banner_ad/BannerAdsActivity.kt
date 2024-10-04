@@ -4,7 +4,9 @@ import com.example.analytics1.R
 import com.example.analytics1.ads.BannerManager
 import com.example.analytics1.base.activity.BaseActivity
 import com.example.analytics1.databinding.ActivityBannerAdsBinding
+import com.example.analytics1.util.MyUtils.Companion.goneView
 import com.example.analytics1.util.MyUtils.Companion.openActivity
+import com.example.analytics1.util.MyUtils.Companion.visibleView
 import com.example.analytics1.view.activity.NothingActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -16,15 +18,20 @@ class BannerAdsActivity : BaseActivity<ActivityBannerAdsBinding>() {
     private var bannerManager: BannerManager? = null
     override fun loadAds() {
         super.loadAds()
-
         CoroutineScope(Dispatchers.IO).launch {
             runOnUiThread {
-                // Load an ad on the main thread.
-                bannerManager = BannerManager.newInstance(
-                    this@BannerAdsActivity,
-                    getString(R.string.banner_adaptive_ad_unit_id)
-                )
-                bannerManager?.loadBanner(binding.layoutAds)
+                binding.apply {
+                    shimmerView.startShimmer()
+                    // Load an ad on the main thread.
+                    bannerManager = BannerManager.newInstance(
+                        this@BannerAdsActivity,
+                        getString(R.string.banner_adaptive_ad_unit_id)
+                    )
+                    bannerManager?.loadBanner(layoutAds) {
+                        shimmerView.stopShimmer()
+                        shimmerView.goneView()
+                    }
+                }
             }
         }
     }

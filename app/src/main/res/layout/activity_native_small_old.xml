@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layoutAds"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -34,7 +34,7 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/layoutAds"
+        android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
@@ -42,12 +42,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <ViewStub
+        <include
+            android:id="@+id/layoutShimmer"
+            layout="@layout/shimmer_native_template_small_old" />
+
+        <FrameLayout
+            android:id="@+id/layoutAds"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout="@layout/native_ad_template_small_old"
-            tools:visibility="visible" />
+            android:layout_height="wrap_content">
 
+            <ViewStub
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout="@layout/native_ad_template_small_old"
+                tools:visibility="visible" />
+        </FrameLayout>
     </FrameLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

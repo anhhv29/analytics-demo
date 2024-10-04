@@ -35,7 +35,7 @@ class CollapsibleBannerManager private constructor(
         }
 
     // Initialize and load banner ad
-    fun loadCollapsibleBanner(adContainer: ViewGroup) {
+    fun loadCollapsibleBanner(adContainer: ViewGroup, afterLoadAd: () -> Unit) {
         adView = AdView(activity).apply {
             adUnitId = this@CollapsibleBannerManager.adUnitId
             setAdSize(mAdSize)
@@ -51,7 +51,7 @@ class CollapsibleBannerManager private constructor(
         adContainer.addView(adView)
 
         // Listen to ad events.
-        adListener()
+        adListener(afterLoadAd)
 
         // Load the ad.
         val adRequest = AdRequest.Builder()
@@ -76,7 +76,7 @@ class CollapsibleBannerManager private constructor(
         Log.d("scp", "Collapsible resumeBanner")
     }
 
-    private fun adListener() {
+    private fun adListener(afterLoadAd: () -> Unit) {
         adView?.adListener = object : AdListener() {
             override fun onAdClicked() {
                 // Code to be executed when the user clicks on an ad.
@@ -92,6 +92,7 @@ class CollapsibleBannerManager private constructor(
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 // Code to be executed when an ad request fails.
                 Log.d("scp", "CollapsibleBanner onAdFailedToLoad")
+                afterLoadAd.invoke()
             }
 
             override fun onAdImpression() {
@@ -103,6 +104,7 @@ class CollapsibleBannerManager private constructor(
             override fun onAdLoaded() {
                 // Code to be executed when an ad finishes loading.
                 Log.d("scp", "CollapsibleBanner onAdLoaded")
+                afterLoadAd.invoke()
             }
 
             override fun onAdOpened() {

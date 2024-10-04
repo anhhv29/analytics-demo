@@ -73,7 +73,10 @@ class NativeInlineSpanCountAdapter(
         layoutView.goneView()
         layoutAds.visibleView()
 
+        layoutShimmer.shimmerView.startShimmer()
         nativeManager?.loadNativeAd { nativeAd ->
+            layoutShimmer.shimmerView.stopShimmer()
+            layoutShimmer.shimmerView.goneView()
             if (nativeAd != null) {
                 nativeManager?.loadAdTemplate(
                     nativeAd,
@@ -98,6 +101,7 @@ class NativeInlineSpanCountAdapter(
     private fun ItemDemoNativeInlineBinding.showContent() {
         layoutView.visibleView()
         layoutAds.goneView()
+        layoutShimmer.shimmerView.goneView()
     }
 
     private fun ItemDemoNativeInlineBinding.loadImage(imageData: Int) {
