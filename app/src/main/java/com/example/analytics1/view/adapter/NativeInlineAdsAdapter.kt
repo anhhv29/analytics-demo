@@ -82,7 +82,7 @@ class NativeInlineAdsAdapter(
     }
 
     private fun removeAd(holder: ViewHolder, position: Int) {
-        if (position != RecyclerView.NO_POSITION && mList[position].type == AD_TYPE) {
+        if (position != RecyclerView.NO_POSITION && position < mList.size && mList[position].type == AD_TYPE) {
             mList.removeAt(position)
             notifyItemRemoved(position)
             notifyItemRangeChanged(position, mList.size)
