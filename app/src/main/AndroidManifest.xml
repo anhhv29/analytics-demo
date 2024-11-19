@@ -29,6 +29,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".view.activity.ResultGsonActivity"
+            android:exported="true" />
+        <activity
             android:name=".view.activity.NothingActivity"
             android:exported="true" />
         <activity

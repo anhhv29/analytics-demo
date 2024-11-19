@@ -61,6 +61,12 @@ class MyUtils {
             startActivity(intent)
         }
 
+        inline fun <reified T> Context.openActivityWithBlock(block: Intent.() -> Unit) {
+            val intent = Intent(this, T::class.java)
+            intent.block()
+            startActivity(intent)
+        }
+
         fun <T> Context.openActivityAndClearApp(it: Class<T>, extras: Bundle.() -> Unit = {}) {
             val intent = Intent(this, it)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
