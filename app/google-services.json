@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "487966902428",
-    "project_id": "prj-demo-anhhv",
-    "storage_bucket": "prj-demo-anhhv.appspot.com"
+    "project_number": "810338190615",
+    "project_id": "analytics-demo-0",
+    "storage_bucket": "analytics-demo-0.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:487966902428:android:f8ba0b789fe111d2da0559",
+        "mobilesdk_app_id": "1:810338190615:android:dec7b1ae472a5904106352",
         "android_client_info": {
           "package_name": "com.example.analytics1"
         }
@@ -15,26 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCIQ035rPCGlCQ4QU-cdyl_4xkC61fBBkk"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:487966902428:android:c2ee622b842a582eda0559",
-        "android_client_info": {
-          "package_name": "com.google.firebase.quickstart.analytics"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCIQ035rPCGlCQ4QU-cdyl_4xkC61fBBkk"
+          "current_key": "AIzaSyAaurBgNEOFAJ7SPiAlcpboMrc2AfqiaY4"
         }
       ],
       "services": {
