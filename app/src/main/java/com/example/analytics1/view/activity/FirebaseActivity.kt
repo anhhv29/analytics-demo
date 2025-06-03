@@ -2,10 +2,8 @@ package com.example.analytics1.view.activity
 
 import android.graphics.Color
 import android.util.Log
-import android.view.LayoutInflater
 import com.example.analytics1.R
 import com.example.analytics1.base.activity.BaseActivity
-import com.example.analytics1.databinding.ActivityBannerBinding
 import com.example.analytics1.databinding.ActivityFirebaseBinding
 import com.example.analytics1.util.Constants
 import com.example.analytics1.util.Constants.LogEvents.Companion.EVENT_CLICK_IMAGE
@@ -21,6 +19,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.remoteconfig.remoteConfig
 
 class FirebaseActivity : BaseActivity<ActivityFirebaseBinding>() {
@@ -103,6 +102,36 @@ class FirebaseActivity : BaseActivity<ActivityFirebaseBinding>() {
                 // Get token
                 getTokenFCM()
             }
+
+            binding.btnSubscribeToTopic.setOnClickListener {
+                subscribeToTopic("user_vip")
+            }
+
+            binding.btnUnsubscribeFromTopic.setOnClickListener {
+                unsubscribeFromTopic("user_vip")
+            }
         }
+    }
+
+    private fun subscribeToTopic(topic: String) {
+        FirebaseMessaging.getInstance().subscribeToTopic(topic)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("scp", "Đã đăng ký topic: $topic")
+                } else {
+                    Log.e("scp", "Lỗi khi đăng ký topic $topic: ${task.exception}")
+                }
+            }
+    }
+
+    fun unsubscribeFromTopic(topic: String) {
+        FirebaseMessaging.getInstance().unsubscribeFromTopic(topic)
+            .addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    Log.d("scp", "Đã huỷ đăng ký topic: $topic")
+                } else {
+                    Log.e("scp", "Lỗi khi huỷ đăng ký topic $topic: ${task.exception}")
+                }
+            }
     }
 }
