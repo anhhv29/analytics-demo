@@ -77,6 +77,8 @@
     <string name="rewarded_ad_unit_id">ca-app-pub-3940256099942544/5224354917</string>
     <string name="rewarded_interstitial_ad_unit_id">ca-app-pub-3940256099942544/5354046379</string>
     <string name="ad">Ad</string>
+    <string name="subscribe_to_topic">Subscribe To Topic</string>
+    <string name="unsubscribe_from_topic">Unsubscribe From Topic</string>
     <string-array name="native_ad_unit_ids">
         <item>ca-app-pub-3940256099942544/2247696110</item>
         <item>ca-app-pub-3940256099942544/2521693316</item>

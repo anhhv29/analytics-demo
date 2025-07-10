@@ -167,13 +167,36 @@
             android:layout_height="wrap_content"
             android:text="@string/firebase_cloud_message" />
 
-        <Button
-            android:id="@+id/btnLogToken"
-            android:layout_width="120dp"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_marginStart="20dp"
-            android:text="@string/log_token"
-            tools:textColor="@color/white" />
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnLogToken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/log_token"
+                tools:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnSubscribeToTopic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginVertical="10dp"
+                android:text="@string/subscribe_to_topic"
+                tools:textColor="@color/white" />
+
+            <Button
+                android:id="@+id/btnUnsubscribeFromTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/unsubscribe_from_topic"
+                tools:textColor="@color/white" />
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>
