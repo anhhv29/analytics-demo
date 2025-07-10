@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ad-services-config>
+    <!-- Enable the Ad ID permission runtime opt-in. -->
+    <ad-services-permissions>
+        <ad-id-permission enabled="true" />
+    </ad-services-permissions>
+
+    <!-- Enable ad services features. -->
+    <ad-services-features>
+        <ad-service enabled="true" />
+    </ad-services-features>
+</ad-services-config>

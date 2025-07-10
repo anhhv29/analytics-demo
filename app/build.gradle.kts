@@ -10,12 +10,12 @@ plugins {
 
 android {
     namespace = "com.example.analytics1"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.example.analytics1"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 36
         versionCode = 1
         versionName = "0.0.1"
 
@@ -34,10 +34,17 @@ android {
             storeFile = file("keystore/cscmobiapps.jks")
             storePassword = "cscmobi"
         }
+
+        create("staging") {
+            keyAlias = "cscmobiapps"
+            keyPassword = "cscmobi"
+            storeFile = file("keystore/cscmobiapps.jks")
+            storePassword = "cscmobi"
+        }
     }
 
     buildTypes {
-        debug {
+        getByName("debug") {
             isDebuggable = true
             isMinifyEnabled = false
             multiDexEnabled = true
@@ -45,12 +52,9 @@ android {
             manifestPlaceholders["crashlyticsCollectionEnabled"] = false
         }
 
-        release {
-            //debug for build release
-            isDebuggable = true
-
-//            isDebuggable = false
+        getByName("release") {
             isMinifyEnabled = true
+            isDebuggable = false
             multiDexEnabled = true
             isShrinkResources = true
             manifestPlaceholders["crashlyticsCollectionEnabled"] = true
@@ -60,17 +64,36 @@ android {
             )
             signingConfig = signingConfigs.getByName("release")
         }
+
+        create("staging") {
+            initWith(getByName("debug"))
+            isMinifyEnabled = true
+            isDebuggable = true
+            multiDexEnabled = true
+            isShrinkResources = true
+            manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+            signingConfig = signingConfigs.getByName("staging")
+        }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
-    kotlinOptions {
-        jvmTarget = "1.8"
+
+    kotlin {
+        jvmToolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
     }
+
     buildFeatures {
         viewBinding = true
+    }
+
+    flavorDimensions += "default"
+    productFlavors {
+        create("dev") {}
     }
 }
 

@@ -47,11 +47,14 @@ abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     override fun attachBaseContext(base: Context) {
         var currentLanguage: String? = SharedPreferences.getLanguage(base)
         if (currentLanguage.isNullOrEmpty()) currentLanguage = ENGLISH
+
         val resources = base.resources
-        val locale = Locale(currentLanguage)
+        val locale = Locale.Builder().setLanguage(currentLanguage).build()
         Locale.setDefault(locale)
+
         val config = resources.configuration
         config.setLocale(locale)
+
         val base1 = base.createConfigurationContext(config)
         super.attachBaseContext(base1)
     }
