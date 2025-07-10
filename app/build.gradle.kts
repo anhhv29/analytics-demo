@@ -50,11 +50,12 @@ android {
             multiDexEnabled = true
             isShrinkResources = false
             manifestPlaceholders["crashlyticsCollectionEnabled"] = false
+            signingConfig = signingConfigs.getByName("debug")
         }
 
         getByName("release") {
-            isMinifyEnabled = true
             isDebuggable = false
+            isMinifyEnabled = true
             multiDexEnabled = true
             isShrinkResources = true
             manifestPlaceholders["crashlyticsCollectionEnabled"] = true
@@ -91,9 +92,23 @@ android {
         viewBinding = true
     }
 
-    flavorDimensions += "default"
+    flavorDimensions += "environment"
     productFlavors {
-        create("dev") {}
+        create("dev") {
+            dimension = "environment"
+            manifestPlaceholders["appName"] = "Analytics1 Dev"
+        }
+
+        create("stage") {
+            dimension = "environment"
+            manifestPlaceholders["appName"] = "Analytics1 Staging"
+        }
+
+        create("prod") {
+            dimension = "environment"
+            // No suffix for production
+            manifestPlaceholders["appName"] = "Analytics1"
+        }
     }
 }
 
